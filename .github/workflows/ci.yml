@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-tests:
+    name: Python tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run Python regression suite
+        run: python -m unittest discover -s tests -p 'test_*.py'
+
+  javascript-tests:
+    name: JavaScript tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Node dependencies
+        run: npm install --no-audit --no-fund
+      - name: Run JavaScript regression suite
+        run: npm run test:js
+
+  go-tests:
+    name: Go tests + race + vet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.2'
+          cache: false
+      - name: Unit tests
+        run: go test ./...
+      - name: Race detector
+        run: go test -race ./...
+      - name: Vet
+        run: go vet ./...
+
+  repository-hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject raw FH6 navigation assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          found="$(find . -type f \( -name '*.nav' -o -name '*.owt' -o -name '*.oww' -o -name '*.owbs' \) -not -path './.git/*' -print)"
+          if [ -n "$found" ]; then
+            printf 'Raw FH6 navigation assets must not be committed:\n%s\n' "$found"
+            exit 1
+          fi
+      - name: Reject source-tree executables
+        shell: bash
+        run: |
+          set -euo pipefail
+          found="$(find . -type f -name '*.exe' -not -path './.git/*' -print)"
+          if [ -n "$found" ]; then
+            printf 'Release executables belong in GitHub Releases, not source:\n%s\n' "$found"
+            exit 1
+          fi
+      - name: Validate README security contract
+        run: node --test tests/readme_release_security.test.mjs
