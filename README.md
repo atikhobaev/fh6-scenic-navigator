@@ -48,9 +48,9 @@ Designed for a second monitor, tablet, or phone while the in-game HUD stays out 
 
 | Download | Integrity | Malware scan |
 | --- | --- | --- |
-| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | **VirusTotal:** ⏳ waiting for `VT_API_KEY` setup |
+| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | **VirusTotal:** ⏳ `VT_API_KEY` not configured — see [SECURITY.md](SECURITY.md) |
 
-Current verified source-release SHA-256:
+**SHA-256**
 
 ```text
 b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258
