@@ -14,7 +14,7 @@
 **A polished local companion navigator and route planner for FH6.**  
 Designed for a second monitor, tablet, or phone while the in-game HUD stays out of the way.
 
-[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🛡️ Security](SECURITY.md)
+[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md)
 
 <br />
 
@@ -27,7 +27,7 @@ Designed for a second monitor, tablet, or phone while the in-game HUD stays out 
 </div>
 
 > [!NOTE]
-> FH6 Scenic Navigator is a personal/private pet project and is not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
+> FH6 Scenic Navigator is a personal pet project and is not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
 
 ## ✨ What it does
 
@@ -70,6 +70,113 @@ Get-FileHash .\FH6_Scenic_Navigator_Windows_x64.exe -Algorithm SHA256
 
 Compare the result with the adjacent `.sha256` asset in the same GitHub Release.
 
+## 🚀 How to run it
+
+### 1. Download and start the portable launcher
+
+1. Download the latest **Windows x64 portable EXE** using the green button above.
+2. Run `FH6_Scenic_Navigator_Windows_x64.exe` on Windows 10/11 x64.
+3. No installation and no separate Python setup are required — the portable build already contains the Navigator payload and the official CPython embeddable runtime.
+4. Click **Start Navigator** / **Запустить Navigator**.
+5. Wait until the launcher reports that Navigator is running. The progress line shows preparation of the runtime, road graph, localization and local server.
+6. Open **DRIVE** for live navigation or Open **PLAN** for route planning. If auto-open is enabled, DRIVE opens only after the local HTTP server is actually ready.
+
+### 2. Enable FH6 telemetry
+
+In FH6 open:
+
+```text
+Settings → HUD and Gameplay → Data Out
+```
+
+Set:
+
+```text
+DATA OUT = ON
+IP       = the LAN IP shown by the Navigator launcher
+PORT     = 1234
+```
+
+In other words, PORT = `1234`. Start driving after applying the settings. The launcher distinguishes between waiting for FH6, connected telemetry, and a lost connection.
+
+> [!TIP]
+> If DRIVE is open on the same PC, the browser uses the local Navigator server. If you open it from a phone/tablet/second PC, both devices must be on the same LAN and Windows Firewall must allow the Navigator on a **Private** network.
+
+### 3. DRIVE vs PLAN
+
+- **DRIVE** — use while driving: current target, road-following route, distance, turn guidance, auto zoom, off-route detection and rerouting.
+- **PLAN** — build routes before driving: search places, filter the map, open POI popovers, add stops, reorder route items, reverse/optimize and start navigation.
+
+### 4. If the phone or another PC cannot connect
+
+Run `allow_firewall.ps1` as Administrator or manually allow FH6 Scenic Navigator / its bundled Python runtime through Windows Firewall for **Private networks**.
+
+The launcher shows both the local PC URL and the LAN URL to use on another device.
+
+### 5. If startup fails
+
+Expand **Startup Log / Журнал запуска** in the launcher. It opens automatically on startup errors.
+
+Persistent logs are stored in:
+
+```text
+%LOCALAPPDATA%\FH6 Scenic Navigator\logs
+```
+
+The launcher also attempts conservative stale-process recovery if an old Navigator instance is still occupying the configured HTTP port.
+
+For the longer Russian startup guide see [`HOW_TO_START.txt`](HOW_TO_START.txt).
+
+## 🧠 Engineering challenges we solved
+
+This project stopped being a simple “draw a line between map points” experiment once real road legality entered the picture. The hardest part was making routes behave correctly on **complex interchanges, ramps and one-way roads**.
+
+### 🛣️ Complex interchanges: nearby roads are not necessarily connected
+
+At a motorway interchange, two ramps can cross almost at the same X/Z coordinates while being on different levels or having no legal connection at that point. A generic nearest-node graph can therefore create routes that look plausible from above but are impossible to drive.
+
+The solution was to make **Directed WVAN** the routing authority. `fh6-navgraph-v1` is compiled from locally owned FH6 navigation data and preserves the game's structural connectivity instead of creating links merely because road geometry is close together.
+
+### ↪️ One-way movement and turn legality
+
+Early road graphs effectively behaved like:
+
+```text
+A <-> B
+```
+
+That is wrong for a one-way ramp. The final graph preserves directed movement such as:
+
+```text
+A -> B
+```
+
+The compiler keeps ordered WVAN sections, `oneway_forward`, exact shared `NavPoint` connections and explicit restrictions such as `no_right_turn` where available. This means the planner can prefer a longer but drivable interchange loop instead of routing backwards up an exit ramp.
+
+### 🚫 Unknown rules fail closed
+
+Some reverse-engineered fields — notably the exact numeric semantics around `uturn` — were not proven strongly enough to guess. Immediate reverse/U-turn transitions are therefore blocked, while a normal legal reversal through a loop/interchange is still possible through ordinary directed edges.
+
+If no legal directed path exists, DRIVE/PLAN **fail closed** rather than falling back to a prettier but illegal bidirectional route.
+
+### 📡 Picking the correct ramp from live telemetry
+
+Routing legality alone is not enough: on parallel ramps the car can be physically close to several road segments. Runtime map matching therefore uses:
+
+- X/Z distance to candidate segments;
+- car yaw/bearing versus segment direction;
+- continuity with the previously matched directed segment.
+
+A persistent off-route state beyond roughly **45 m for 800 ms** triggers a new legal directed route to the same active destination.
+
+### 🧩 Why ForzaLabs still matters
+
+ForzaLabs/community data remains useful for visual road shape, overlays and contextual information. But it no longer decides whether a transition is legal. **ForzaLabs supplies useful geometry; Directed WVAN supplies traffic authority.**
+
+Other problems solved along the way include official POI localization without machine-translation guessing, offline catalog packaging, a one-file portable launcher, stale-process recovery, Win32 UI responsiveness, and killing orphaned Python servers reliably with a Windows Job Object.
+
+➡️ **[Read the full engineering story →](docs/ENGINEERING_NOTES.md)**
+
 ## 🧪 Automated checks
 
 <img src="docs/images/security-strip.svg" alt="Python, JavaScript, Go, SHA-256 and VirusTotal checks" width="100%" />
@@ -86,16 +193,6 @@ Every push to `main` and every pull request runs separate checks so a failure is
 | 🛡️ **VirusTotal** | EXE submitted after publishing when `VT_API_KEY` is configured |
 
 See [`SECURITY.md`](SECURITY.md) for the exact verification policy.
-
-## 🚀 Quick start
-
-1. Download the latest **Windows x64 portable EXE** using the button above.
-2. Run the launcher on Windows 10/11 x64.
-3. Click **Start Navigator**.
-4. Open **DRIVE** for navigation or **PLAN** for route planning.
-5. In FH6, enable Data Out and use the IP/UDP port shown by the launcher.
-
-No separate Python installation is required for the portable build.
 
 ## 🧩 Architecture
 
@@ -150,16 +247,17 @@ static/                   DRIVE / PLAN frontend, i18n, data and assets
 tools/                    build-time catalog/import tooling
 tests/                    Python + JavaScript regression suites
 scripts/                  build and release validation helpers
-docs/                     design docs, artwork and release checklist
+docs/                     design docs, artwork, engineering notes and release checklist
 server.py                 local HTTP + telemetry server
 launcher.py               source/development startup wrapper
 ```
 
 ## 📚 Documentation
 
+- 🧠 [`docs/ENGINEERING_NOTES.md`](docs/ENGINEERING_NOTES.md) — how interchanges, one-way routing, map matching and launcher problems were solved
 - 🇷🇺 [`README_RU.md`](README_RU.md) — extended Russian technical history
 - 📝 [`CHANGELOG.md`](CHANGELOG.md) — reconstructed project version history
-- 🚦 [`HOW_TO_START.txt`](HOW_TO_START.txt) — startup notes
+- 🚦 [`HOW_TO_START.txt`](HOW_TO_START.txt) — detailed Russian startup notes
 - 🗺️ [`PLANNER_RU.md`](PLANNER_RU.md) — planner documentation
 - 🧭 [`GAME_NAV_PROBE_RU.md`](GAME_NAV_PROBE_RU.md) — game navigation probing notes
 - 🔬 [`NAV_BINARY_PROBE_RU.md`](NAV_BINARY_PROBE_RU.md) — binary navigation investigation
