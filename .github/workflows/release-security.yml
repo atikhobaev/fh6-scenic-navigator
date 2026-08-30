@@ -1,0 +1,174 @@
+name: Release Security
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to verify (empty = latest)'
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths: ['.github/workflows/release-security.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-security-${{ github.repository }}
+  cancel-in-progress: false
+
+env:
+  STABLE_ASSET: FH6_Scenic_Navigator_Windows_x64.exe
+
+jobs:
+  release-integrity:
+    name: SHA-256 + VirusTotal
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Resolve release tag
+        id: meta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = release ] && [ -n "${RELEASE_TAG:-}" ]; then
+            tag="$RELEASE_TAG"
+          elif [ -n "${INPUT_TAG:-}" ]; then
+            tag="$INPUT_TAG"
+          else
+            tag="$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName)"
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Download versioned release executable
+        id: asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/release"
+          asset="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name | select(endswith(".exe")) | select(. != "FH6_Scenic_Navigator_Windows_x64.exe")' | head -n 1)"
+          if [ -z "$asset" ]; then
+            asset="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name | select(endswith(".exe"))' | head -n 1)"
+          fi
+          test -n "$asset" || { echo "No EXE asset in $TAG" >&2; exit 1; }
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --dir "$RUNNER_TEMP/release" --pattern "$asset"
+          echo "name=$asset" >> "$GITHUB_OUTPUT"
+          echo "path=$RUNNER_TEMP/release/$asset" >> "$GITHUB_OUTPUT"
+
+      - name: Publish stable download alias and SHA-256
+        id: integrity
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          SOURCE_PATH: ${{ steps.asset.outputs.path }}
+          SOURCE_NAME: ${{ steps.asset.outputs.name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          stable="$RUNNER_TEMP/release/$STABLE_ASSET"
+          cp "$SOURCE_PATH" "$stable"
+          hash="$(sha256sum "$stable" | awk '{print $1}')"
+          printf '%s  %s\n' "$hash" "$STABLE_ASSET" > "$stable.sha256"
+          printf '%s  %s\n' "$hash" "$SOURCE_NAME" > "$SOURCE_PATH.sha256"
+          gh release upload "$TAG" --repo "$GITHUB_REPOSITORY" --clobber "$stable" "$stable.sha256" "$SOURCE_PATH.sha256"
+          echo "sha256=$hash" >> "$GITHUB_OUTPUT"
+          echo "stable_path=$stable" >> "$GITHUB_OUTPUT"
+
+      - name: Detect VirusTotal configuration
+        id: vt-config
+        env:
+          VT_API_KEY: ${{ secrets.VT_API_KEY }}
+        run: |
+          if [ -n "${VT_API_KEY:-}" ]; then echo configured=true >> "$GITHUB_OUTPUT"; else echo configured=false >> "$GITHUB_OUTPUT"; fi
+
+      - name: Submit to VirusTotal and wait for analysis
+        id: vt
+        if: steps.vt-config.outputs.configured == 'true'
+        env:
+          VT_API_KEY: ${{ secrets.VT_API_KEY }}
+          FILE_PATH: ${{ steps.integrity.outputs.stable_path }}
+          SHA256: ${{ steps.integrity.outputs.sha256 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error -X POST 'https://www.virustotal.com/api/v3/files' -H "x-apikey: $VT_API_KEY" -F "file=@$FILE_PATH" > "$RUNNER_TEMP/vt-upload.json"
+          analysis_id="$(python -c 'import json; print(json.load(open("'"$RUNNER_TEMP/vt-upload.json"'"))["data"]["id"])')"
+          for _ in $(seq 1 40); do
+            curl --fail --silent --show-error -H "x-apikey: $VT_API_KEY" "https://www.virustotal.com/api/v3/analyses/$analysis_id" > "$RUNNER_TEMP/vt-analysis.json"
+            status="$(python -c 'import json; print(json.load(open("'"$RUNNER_TEMP/vt-analysis.json"'"))["data"]["attributes"]["status"])')"
+            [ "$status" = completed ] && break
+            sleep 15
+          done
+          [ "$status" = completed ] || { echo 'VirusTotal analysis timeout' >&2; exit 1; }
+          curl --fail --silent --show-error -H "x-apikey: $VT_API_KEY" "https://www.virustotal.com/api/v3/files/$SHA256" > "$RUNNER_TEMP/vt-report.json"
+          python - "$RUNNER_TEMP/vt-report.json" "$GITHUB_OUTPUT" <<'PY'
+          import json, sys
+          stats=json.load(open(sys.argv[1], encoding='utf-8'))['data']['attributes'].get('last_analysis_stats', {})
+          with open(sys.argv[2], 'a', encoding='utf-8') as out:
+              for key in ('malicious','suspicious'):
+                  out.write(f'{key}={int(stats.get(key,0))}\n')
+              out.write(f'total={sum(int(v) for v in stats.values())}\n')
+          PY
+
+      - name: Update README verification block
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+          SHA256: ${{ steps.integrity.outputs.sha256 }}
+          VT_CONFIGURED: ${{ steps.vt-config.outputs.configured }}
+          VT_MALICIOUS: ${{ steps.vt.outputs.malicious }}
+          VT_SUSPICIOUS: ${{ steps.vt.outputs.suspicious }}
+          VT_TOTAL: ${{ steps.vt.outputs.total }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          tag=os.environ['TAG']; sha=os.environ['SHA256']
+          configured=os.environ.get('VT_CONFIGURED')=='true'
+          malicious=int(os.environ.get('VT_MALICIOUS') or 0); suspicious=int(os.environ.get('VT_SUSPICIOUS') or 0); total=int(os.environ.get('VT_TOTAL') or 0)
+          if configured:
+              vt=f'[**VirusTotal:** {malicious} malicious / {suspicious} suspicious / {total} engines](https://www.virustotal.com/gui/file/{sha})'
+          else:
+              vt='**VirusTotal:** ⏳ `VT_API_KEY` not configured — see [SECURITY.md](SECURITY.md)'
+          block=f'''### ✅ Latest release: `{tag}`\n\n| Download | Integrity | Malware scan |\n| --- | --- | --- |\n| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | {vt} |\n\n**SHA-256**\n\n```text\n{sha}\n```\n\n[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/{tag}) · [VirusTotal report by SHA-256](https://www.virustotal.com/gui/file/{sha})'''
+          p=Path('README.md'); text=p.read_text(encoding='utf-8'); start='<!-- RELEASE_STATUS_START -->'; end='<!-- RELEASE_STATUS_END -->'
+          before, rest=text.split(start,1); _, after=rest.split(end,1)
+          p.write_text(before+start+'\n'+block+'\n'+end+after, encoding='utf-8')
+          PY
+
+      - name: Commit README status
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          if git diff --quiet -- README.md; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m "docs: update release verification for $TAG"
+          git push
+
+      - name: VirusTotal setup reminder
+        if: steps.vt-config.outputs.configured != 'true'
+        run: echo '::warning::VT_API_KEY is not configured. SHA-256 and stable download were published; add the secret and rerun for VirusTotal.'
+
+      - name: Flag malicious VirusTotal detections
+        if: steps.vt-config.outputs.configured == 'true' && steps.vt.outputs.malicious != '0'
+        run: |
+          echo 'VirusTotal reported one or more malicious detections. Review before sharing the release.' >&2
+          exit 1
