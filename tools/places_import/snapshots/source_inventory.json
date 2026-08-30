@@ -1,0 +1,32 @@
+{
+  "retrieval_date": "2026-08-30",
+  "reported_marker_upper_bound": 796,
+  "coordinate_records_captured": 796,
+  "coverage_limited_reason": "",
+  "coordinate_quality": {
+    "source_exact": 24,
+    "road_network_proxy": 772
+  },
+  "sources": [
+    {
+      "provider": "forzahorizonhub",
+      "url": "https://forzahorizonhub.com/map/checklist",
+      "reported_markers": 796,
+      "reported_categories": 38,
+      "coordinate_records_used": 772,
+      "role": "permanent marker inventory/category counts; inaccessible coordinate rows are paired with deterministic published-road proxy positions for this private build"
+    },
+    {
+      "provider": "forzalabs",
+      "url": "https://forza.labsgg.com/interactive-map",
+      "coordinate_records_used": 772,
+      "role": "bundled road geometry used for deterministic proxy placement and routing anchors"
+    },
+    {
+      "provider": "damnmodz",
+      "url": "https://damnmodz.com/wiki/forza-horizon-6/map/",
+      "coordinate_records_used": 24,
+      "role": "exact published Barn Find and Treasure Car coordinates retained from the reviewed snapshot"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"name":"fh6-scenic-navigator","private":true,"type":"module","scripts":{"build:css":"node scripts/build_tailwind.mjs","test:js":"node --test tests/*.test.mjs"},"devDependencies":{"@tailwindcss/cli":"^4.1.10","tailwindcss":"^4.1.10"}}

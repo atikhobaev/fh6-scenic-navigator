@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#070a0e">
+  <title data-i18n="drive.pageTitle">FH6 Navigator · Drive</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+</head>
+<body>
+<div id="app" class="drive-shell hc-shell">
+  <div id="map" class="drive-map" data-i18n-aria-label="drive.mapAria">
+    <div id="tiles"></div><canvas id="roadsCanvas"></canvas><svg id="overlay"></svg>
+  </div>
+
+  <header class="drive-topbar">
+    <div class="drive-topbar-left">
+      <div class="drive-brand hc-glass">
+        <div class="hc-brand"><span class="hc-wordmark">FH6 NAV</span><span class="hc-mode"><strong>DRIVE</strong><a href="/planner/">PLAN</a></span><span class="hc-build">v1.19.2</span></div>
+      </div>
+      <div class="drive-status hc-glass"><span id="connDot" class="dot"></span><span id="connText" data-i18n="drive.waitingForza">WAITING FOR FORZA</span><span class="status-divider" aria-hidden="true"></span><div class="locale-switcher"><button id="driveLocaleButton" class="locale-flag-button" type="button" data-tooltip-key="drive.languageTooltip" aria-haspopup="menu" aria-expanded="false"><img class="locale-flag-image" src="/assets/flags/en-US.svg" alt=""></button><div id="driveLocaleMenu" class="locale-menu" role="menu" hidden><button type="button" role="menuitemradio" data-locale-value="en-US"><img class="locale-flag-image" src="/assets/flags/en-US.svg" alt=""> <span>English</span></button><button type="button" role="menuitemradio" data-locale-value="zh-CN"><img class="locale-flag-image" src="/assets/flags/zh-CN.svg" alt=""> <span>简体中文</span></button><button type="button" role="menuitemradio" data-locale-value="ru-RU"><img class="locale-flag-image" src="/assets/flags/ru-RU.svg" alt=""> <span>Русский</span></button><button type="button" role="menuitemradio" data-locale-value="es-419"><img class="locale-flag-image" src="/assets/flags/es-419.svg" alt=""> <span>Español (Latinoamérica)</span></button><div id="localePoiStatus" class="locale-poi-status" role="status"></div></div></div></div>
+    </div>
+    <nav class="drive-tools" data-i18n-aria-label="drive.controlsAria">
+      <button id="zoomIn" class="hc-button drive-tool drive-tool-icon" data-i18n-title="drive.zoomIn" data-i18n-aria-label="drive.zoomIn" data-tooltip-key="drive.zoomInHelp">＋</button>
+      <button id="zoomOut" class="hc-button drive-tool drive-tool-icon" data-i18n-title="drive.zoomOut" data-i18n-aria-label="drive.zoomOut" data-tooltip-key="drive.zoomOutHelp">−</button>
+      <button id="roadsBtn" class="hc-button drive-tool drive-tool-wide" data-i18n-title="drive.roadsTooltip" data-tooltip-key="drive.roadsHelp"><span>⌁</span><span class="wide" data-i18n="drive.roads">Roads</span></button>
+      <button id="followBtn" class="hc-button drive-tool drive-tool-wide active" data-i18n-title="drive.followTooltip" data-tooltip-key="drive.followHelp"><span>⌖</span><span class="wide" data-i18n="drive.follow">Follow</span></button>
+      <button id="autoZoomBtn" class="hc-button drive-tool drive-tool-auto" aria-pressed="true" data-tooltip-key="drive.autoZoomHelp"></button>
+      <button id="fitBtn" class="hc-button drive-tool drive-tool-wide" data-i18n-title="drive.fitRouteTooltip" data-tooltip-key="drive.fitRouteHelp"><span>⌗</span><span class="wide" data-i18n="drive.fitRoute">Fit route</span></button>
+      <button id="recordBtn" class="hc-button drive-tool drive-tool-record" data-i18n-title="drive.recordTooltip" data-tooltip-key="drive.recordHelp"><span>●</span><span class="wide" data-i18n="drive.record">Record</span></button>
+      <button id="menuBtn" class="hc-button drive-tool drive-tool-icon" data-i18n-title="drive.menuTooltip" data-i18n-aria-label="drive.menuTooltip" data-tooltip-key="drive.menuHelp">⋯</button>
+    </nav>
+  </header>
+
+  <div id="turnCard" class="drive-turncard hc-glass" aria-live="assertive">
+    <div id="turnIcon" class="drive-turn-icon">↱</div><div><div id="turnDistance" class="drive-turn-distance"></div><div id="turnInstruction" class="drive-turn-instruction"></div></div>
+  </div>
+  <div id="offRoute" class="drive-warning" data-i18n="drive.offRecordedRoute">OFF RECORDED ROUTE</div>
+  <div id="toast" class="drive-toast"></div>
+
+  <aside id="panel" class="drive-panel hc-glass hc-scrollbar">
+    <h2 data-i18n="drive.navigation">NAVIGATION</h2>
+    <div class="drive-panel-row"><span data-i18n="common.route">Route</span><b id="routeName">—</b></div>
+    <div id="routeNote" class="drive-panel-row" style="justify-content:flex-start;color:#8296a5">—</div>
+    <div class="drive-panel-row"><span data-i18n="drive.direction">Direction</span><button id="directionBtn" class="hc-button" data-tooltip-key="drive.directionHelp"></button></div>
+    <div class="drive-panel-row"><span data-i18n="drive.routing">Routing</span><b id="routingStatus">—</b></div>
+    <div id="plannerSessionControls" class="drive-panel-actions" hidden><button id="plannerPreviousStop" class="hc-button" data-i18n="drive.previousStop" data-tooltip-key="drive.previousStopHelp">Previous stop</button><button id="plannerSkipStop" class="hc-button" data-i18n="drive.skipStop" data-tooltip-key="drive.skipStopHelp">Skip stop</button></div>
+    <div class="hc-kicker" data-i18n="drive.routePoints">Route points</div><ol id="waypointList" class="drive-waypoints"></ol>
+    <div class="drive-panel-actions"><button id="panelZoomIn" class="hc-button" data-i18n="drive.zoomIn" data-tooltip-key="drive.zoomInHelp">Zoom in</button><button id="panelZoomOut" class="hc-button" data-i18n="drive.zoomOut" data-tooltip-key="drive.zoomOutHelp">Zoom out</button><button id="panelFit" class="hc-button" data-i18n="drive.fitRoute" data-tooltip-key="drive.fitRouteHelp">Fit route</button><button id="panelRecord" class="hc-button" data-i18n="drive.record" data-tooltip-key="drive.recordHelp">Record</button></div>
+    <div class="drive-panel-actions"><button id="resetProgress" class="hc-button" data-i18n="drive.resetProgress" data-tooltip-key="drive.resetProgressHelp">Reset progress</button><button id="exportTrack" class="hc-button" data-i18n="drive.exportTrack" data-tooltip-key="drive.exportTrackHelp">Export track</button><button id="importTrack" class="hc-button" data-i18n="drive.importTrack" data-tooltip-key="drive.importTrackHelp">Import track</button><button id="clearTrack" class="hc-button danger" data-i18n="drive.clearTrack" data-tooltip-key="drive.clearTrackHelp">Clear track</button></div>
+    <input id="trackFile" type="file" accept="application/json,.json" hidden>
+    <div class="hc-kicker" data-i18n="drive.legend">Legend</div>
+    <p><b style="color:#57c7ff">━━</b> <span data-i18n="drive.routeLine">Route</span> &nbsp; <b style="color:#ffc857">━━</b> <span data-i18n="drive.drivenTrack">Driven track</span></p>
+    <div class="hc-kicker" data-i18n="drive.help">HELP</div><p data-i18n="drive.helpText">Drag the map to pan · wheel/pinch to zoom · click a route point to make it the next target.</p>
+  </aside>
+
+  <section class="drive-navcard hc-glass" aria-live="polite">
+    <div class="drive-metric"><div class="value" id="speed">0</div><div class="label" data-i18n="common.kmh">km/h</div></div>
+    <div class="drive-metric gear"><div class="value" id="gear">—</div><div class="label" data-i18n="common.gear">gear</div></div>
+    <div class="drive-next"><div class="drive-navarrow"><svg id="navArrowSvg" viewBox="0 0 32 32"><path d="M16 2 L27 28 L16 22 L5 28 Z" fill="#57c7ff" stroke="#061018" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div><div class="drive-next-title" id="nextTitle" data-i18n="drive.waitTelemetry">Waiting for telemetry</div><div class="drive-next-game" id="nextGame" data-i18n="drive.enableDataOut">Enable Data Out in FH6</div><div class="drive-next-meta"><span id="distance">—</span><span id="rpmText">0 RPM</span><span id="progress">0/0</span></div></div></div>
+    <div class="drive-rpm"><i id="rpmBar"></i></div>
+  </section>
+  <div style="position:absolute;right:12px;bottom:8px;z-index:5;color:#40505d;font-size:8px;pointer-events:none" data-i18n="drive.mapAttribution">FH6 map tiles: MapGenie · telemetry calibration: fh6-tel/Oversight</div>
+</div>
+<script type="module" src="/app.js"></script>
+</body></html>

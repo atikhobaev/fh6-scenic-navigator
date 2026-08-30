@@ -1,0 +1,24 @@
+{
+  "retrieval_date": "2026-08-29",
+  "sources": [
+    {
+      "provider": "damnmodz",
+      "url": "https://damnmodz.com/wiki/forza-horizon-6/map/",
+      "role": "source-labeled LabsGG map references and category counts"
+    },
+    {
+      "provider": "mapmaster",
+      "url": "https://mapmaster.io/games/forza-horizon-6/maps/japan",
+      "role": "independent category/name cross-check"
+    },
+    {
+      "provider": "labsgg",
+      "url": "https://forza.labsgg.com/interactive-map",
+      "role": "map coordinate/base-map provenance and category cross-check"
+    }
+  ],
+  "records": [
+    {"provider":"damnmodz","source_id":"treasure-1","name":"1985 Mazda RX-7 GSL-SE","category":"treasure_car","map_x":589,"map_y":1465},
+    {"provider":"mapmaster","source_id":"treasure-rx7","name":"1985 Mazda RX-7 GSL-SE","category":"treasure_car"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "fallback",
+  "localized_places": 0,
+  "total_game_places": 796,
+  "coverage": {
+    "en-US": {"matched": 0, "total": 796},
+    "zh-CN": {"matched": 0, "total": 796},
+    "ru-RU": {"matched": 0, "total": 796},
+    "es-419": {"matched": 0, "total": 796}
+  }
+}

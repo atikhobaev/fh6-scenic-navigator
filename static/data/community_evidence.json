@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_provider": "forzahorizon.app",
+  "captured_at": "2026-08-29",
+  "coordinate_policy": "Evidence only until exact FH6 world coordinates are explicitly obtained; no coordinates are inferred from screenshots or category pages.",
+  "records": [
+    {"source_id": null, "title": "Hokubu Viewpoint", "category": "Secret Road", "contributor": "pr0g", "likes": 1, "source_url": "https://forzahorizon.app/category/secret-roads", "has_public_screenshot": true},
+    {"source_id": null, "title": "Okishinairuma Bridge Viewpoint", "category": "Secret Road", "contributor": "pr0g", "likes": 1, "source_url": "https://forzahorizon.app/category/secret-roads", "has_public_screenshot": true},
+    {"source_id": null, "title": "Hidden Viewpoint", "category": "Scenic", "contributor": "pr0g", "likes": 1, "source_url": "https://forzahorizon.app/category/scenic-spots", "has_public_screenshot": true},
+    {"source_id": null, "title": "Chill Spot by the river", "category": "Scenic", "contributor": "pr0g", "likes": 1, "source_url": "https://forzahorizon.app/category/scenic-spots", "has_public_screenshot": true},
+    {"source_id": null, "title": "Antenna Fuji View (Cross Roads)", "category": "Scenic", "contributor": "pr0g", "likes": 1, "source_url": "https://forzahorizon.app/category/scenic-spots", "has_public_screenshot": true},
+    {"source_id": "b04c05b3-e970-4fd1-81cb-77f4d7309911", "title": "365 supermarket parking lot with view", "category": "Scenic", "contributor": "rayfightergmailcom", "likes": 1, "source_url": "https://forzahorizon.app/spot/b04c05b3-e970-4fd1-81cb-77f4d7309911", "approved_at": "2026-07-23", "has_public_screenshot": true}
+  ]
+}

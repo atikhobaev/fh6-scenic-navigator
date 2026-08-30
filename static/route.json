@@ -1,0 +1,193 @@
+{
+  "name": "Grand Tour Japan — Directed WVAN v1.14",
+  "version": 5,
+  "note": "Замкнутый Grand Tour по всей карте. Active routing теперь использует встроенный Directed WVAN graph: one-way направления и запрещённые переходы учитываются; LabsGG остаётся визуальным дорожным слоем и оптимизатором порядка POI.",
+  "waypoints": [
+    {
+      "name": "Замок Хиросаки",
+      "game": "Hirosaki Castle",
+      "lat": 0.9135,
+      "lng": -0.5634
+    },
+    {
+      "name": "Гора Харуна",
+      "game": "Mt. Haruna",
+      "lat": 0.8538,
+      "lng": -0.5173,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Ветряная электростанция",
+      "game": "Wind Farm",
+      "lat": 0.7899,
+      "lng": -0.4745,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Ине",
+      "game": "Ine",
+      "lat": 0.7771,
+      "lng": -0.4599,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Бамбуковый лес Арасияма",
+      "game": "Arashiyama Bamboo Forest",
+      "lat": 0.7361,
+      "lng": -0.5644,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Перевал Сатта",
+      "game": "Satta Pass",
+      "lat": 0.681,
+      "lng": -0.5035,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Дорога по морскому дну",
+      "game": "Seabed Road",
+      "lat": 0.6024,
+      "lng": -0.5372,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Скалы Мэото Ива",
+      "game": "Meoto Iwa Rock",
+      "lat": 0.5809,
+      "lng": -0.5484,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Приморский парк",
+      "game": "Seaside Park",
+      "lat": 0.5104,
+      "lng": -0.592,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Daikoku Parking Area",
+      "game": "Daikoku Parking Area",
+      "lat": 0.5052,
+      "lng": -0.6644
+    },
+    {
+      "name": "Rainbow Bridge",
+      "game": "Rainbow Bridge",
+      "lat": 0.4965,
+      "lng": -0.6896
+    },
+    {
+      "name": "Tokyo Tower",
+      "game": "Tokyo Tower",
+      "lat": 0.5529,
+      "lng": -0.7177
+    },
+    {
+      "name": "Аллея гинкго Мэйдзи Дзингу Гайэн",
+      "game": "Meiji Jingu Gaien Ginkgo Avenue",
+      "lat": 0.54,
+      "lng": -0.6981
+    },
+    {
+      "name": "Сибуя",
+      "game": "Shibuya Crossing",
+      "lat": 0.5603,
+      "lng": -0.7038
+    },
+    {
+      "name": "Hakone Nanamagari",
+      "game": "Hakone Nanamagari",
+      "lat": 0.4595,
+      "lng": -0.7374
+    },
+    {
+      "name": "Kawazu Nanadaru Loop Bridge",
+      "game": "Kawazu Nanadaru Loop Bridge",
+      "lat": 0.5164,
+      "lng": -0.8068
+    },
+    {
+      "name": "Izu Skyline",
+      "game": "Izu Skyline",
+      "lat": 0.5454,
+      "lng": -0.7606
+    },
+    {
+      "name": "Peace Torii",
+      "game": "Peace Torii",
+      "lat": 0.5568,
+      "lng": -0.8448
+    },
+    {
+      "name": "Fuji Shibazakura",
+      "game": "Fuji Shibazakura",
+      "lat": 0.5903,
+      "lng": -0.8796
+    },
+    {
+      "name": "Bandai Azuma Skyline",
+      "game": "Bandai Azuma Skyline",
+      "lat": 0.6273,
+      "lng": -0.8255,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Нараи-дзюку",
+      "game": "Narai-Juku",
+      "lat": 0.717,
+      "lng": -0.8206,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Ёсинояма",
+      "game": "Yoshinoyama",
+      "lat": 0.7411,
+      "lng": -0.7779,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Сиракава-го",
+      "game": "Shirakawa-go",
+      "lat": 0.7236,
+      "lng": -0.6106,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Храм у водопада Нати",
+      "game": "Temple of Nachi Falls",
+      "lat": 0.8712,
+      "lng": -0.6927,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Norikura Skyline",
+      "game": "Norikura Skyline",
+      "lat": 0.929,
+      "lng": -0.6577,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Горнолыжный курорт Сотояма",
+      "game": "Sotoyama Ski Resort",
+      "lat": 0.9414,
+      "lng": -0.6747,
+      "snapMode": "throughAsphalt"
+    },
+    {
+      "name": "Альпийский маршрут Татэяма-Куробэ",
+      "game": "Tateyama Kurobe Alpine Route",
+      "lat": 0.9575,
+      "lng": -0.6021,
+      "snapMode": "throughAsphalt"
+    }
+  ],
+  "loop": true,
+  "routing": {
+    "avoidDirt": true,
+    "reusePenalty": 7,
+    "avoidImmediateBacktrack": true,
+    "optimizeFirstVisitOrder": true,
+    "maxOrderIterations": 3
+  }
+}

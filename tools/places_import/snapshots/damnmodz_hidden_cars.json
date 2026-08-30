@@ -1,0 +1,35 @@
+{
+  "provider": "damnmodz",
+  "retrieved_at": "2026-08-29",
+  "sources": {
+    "barn_find": "https://damnmodz.com/wiki/forza-horizon-6/map/barn-finds/",
+    "treasure_car": "https://damnmodz.com/wiki/forza-horizon-6/map/treasure-cars/"
+  },
+  "records": [
+    {"source_id":"barn-001","name":"2005 Honda NSX-R GT","category":"barn_find","region":"Ohtani","map_x":760,"map_y":1641},
+    {"source_id":"barn-002","name":"1987 Ford Sierra Cosworth RS500","category":"barn_find","region":"Ito","map_x":1362,"map_y":1928},
+    {"source_id":"barn-003","name":"1969 Toyota 2000GT","category":"barn_find","region":"Ito","map_x":1883,"map_y":1253},
+    {"source_id":"barn-004","name":"1971 Nissan Skyline 2000GT-R","category":"barn_find","region":"Nangan","map_x":714,"map_y":2395},
+    {"source_id":"barn-005","name":"1989 Nissan PAO","category":"barn_find","region":"Minamino","map_x":1137,"map_y":1371},
+    {"source_id":"barn-006","name":"1962 Lincoln Continental","category":"barn_find","region":"Hokubu","map_x":1094,"map_y":931},
+    {"source_id":"barn-007","name":"1998 Nissan #23 Pennzoil NISMO Skyline GT-R","category":"barn_find","region":"Takashiro","map_x":1094,"map_y":650},
+    {"source_id":"barn-008","name":"1982 Porsche 911 Turbo 3.3","category":"barn_find","region":"Ohtani","map_x":878,"map_y":1801},
+    {"source_id":"barn-009","name":"1984 Peugeot 205 Turbo 16","category":"barn_find","region":"Shimanoyama","map_x":295,"map_y":1338},
+    {"source_id":"barn-010","name":"1997 Lamborghini Diablo SV","category":"barn_find","region":"Ito","map_x":1721,"map_y":1429},
+    {"source_id":"barn-011","name":"1997 Mitsubishi Montero Evolution","category":"barn_find","region":"Shimanoyama","map_x":517,"map_y":1645},
+    {"source_id":"barn-012","name":"1998 Nissan R390 (GT1)","category":"barn_find","region":"Ohtani","map_x":631,"map_y":1783},
+    {"source_id":"barn-013","name":"2005 Mitsubishi #1 Sierra Sierra Enterprises Lancer Evolution Time Attack","category":"barn_find","region":"Shimanoyama","map_x":464,"map_y":1275},
+    {"source_id":"barn-014","name":"1983 Nissan #11 Tomica Skyline Turbo Super Silhouette","category":"barn_find","region":"Ito","map_x":1663,"map_y":1323},
+    {"source_id":"barn-015","name":"1991 Mazda #55 Mazda 787B","category":"barn_find","region":"Takashiro","map_x":1451,"map_y":558},
+
+    {"source_id":"treasure-001","name":"1985 Mazda RX-7 GSL-SE","category":"treasure_car","region":"Ohtani","map_x":589,"map_y":1465},
+    {"source_id":"treasure-002","name":"1985 Nissan Safari Turbo","category":"treasure_car","region":"Ito","map_x":1877,"map_y":1021},
+    {"source_id":"treasure-003","name":"2005 Ford GT","category":"treasure_car","region":"Nangan","map_x":1117,"map_y":2370},
+    {"source_id":"treasure-004","name":"1969 Dodge Charger R/T","category":"treasure_car","region":"Minamino","map_x":1270,"map_y":1472},
+    {"source_id":"treasure-005","name":"1981 BMW M1","category":"treasure_car","region":"Hokubu","map_x":1328,"map_y":824},
+    {"source_id":"treasure-006","name":"1995 Mitsubishi Lancer Evolution III GSR","category":"treasure_car","region":"Takashiro","map_x":1013,"map_y":641},
+    {"source_id":"treasure-007","name":"1987 Porsche 959","category":"treasure_car","region":"Shimanoyama","map_x":491,"map_y":1298},
+    {"source_id":"treasure-008","name":"1974 Lancia Stratos HF Stradale","category":"treasure_car","region":"Sotoyama","map_x":1314,"map_y":320},
+    {"source_id":"treasure-009","name":"1991 Nissan Figaro","category":"treasure_car","region":"Tokyo City","map_x":990,"map_y":2086}
+  ]
+}

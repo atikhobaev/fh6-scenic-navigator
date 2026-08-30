@@ -1,0 +1,66 @@
+FH6 SCENIC NAVIGATOR v1.19.2 — PORTABLE LAUNCHER — БЫСТРЫЙ СТАРТ
+
+ЗАПУСК
+1) Запусти `FH6 Scenic Navigator.exe`. Установка не нужна, отдельное консольное окно не открывается.
+2) Нажми **Запустить Navigator**. Launcher покажет этапы подготовки runtime, дорожного графа, локализации и сервера.
+3) После статуса **Navigator работает** используй **Открыть DRIVE** или **Открыть PLAN**. Если включено «Открывать DRIVE после запуска», браузер откроется автоматически только после готовности HTTP-сервера.
+4) В FH6: Settings -> HUD and Gameplay -> Data Out
+   DATA OUT = ON
+   IP = LAN IP, показанный в карточке СЕТЬ
+   PORT = 1234
+5) Начни ехать. Launcher различает «ожидаю FH6», «Forza подключена» и «соединение потеряно».
+6) При необходимости раскрой **Журнал запуска**. При ошибке он раскрывается автоматически. Логи сохраняются в `%LOCALAPPDATA%\FH6 Scenic Navigator\logs`.
+
+LAUNCHER
+- До запуска есть только главное действие **Запустить Navigator**.
+- После запуска появляются **Открыть DRIVE**, **Открыть PLAN** и вторичная команда **Остановить**.
+- Повторный запуск EXE не создаёт вторую копию: активируется существующее окно.
+- Если включена работа в трее, закрытие окна оставляет Navigator запущенным. Tray-меню: DRIVE / PLAN / Показать Launcher / Остановить / Выйти.
+- Settings: автозапуск DRIVE, сворачивание после открытия, работа в трее и общий язык.
+
+MAP-FIRST PLANNER
+7) Нажми PLAN в браузере или **Открыть PLAN** в launcher.
+8) Используй Search сверху и MAP FILTERS слева. Все категории остаются доступны в слоях.
+9) Кликни marker -> popover -> Add to route / Set destination / Favorite.
+10) Справа меняй порядок Route Items drag&drop или ↑ / ↓.
+11) На карте:
+    - double click = временный waypoint
+    - Shift+click = quick add
+    - right click = destination/waypoint/via/My Place
+
+BUILT-IN GRAND TOUR
+12) Saved Routes -> Built-in -> Grand Tour Japan.
+13) Маршрут можно запустить напрямую. Первая структурная правка автоматически создаст Grand Tour Japan — Copy.
+14) Когда все directed legs legal/resolved, нажми START NAVIGATION.
+
+ЯЗЫК И ОФИЦИАЛЬНЫЕ НАЗВАНИЯ
+- В левом status-блоке DRIVE есть кнопка-флаг: English / 简体中文 / Русский / Español (Latinoamérica). Выбор автоматически применяется и к PLAN.
+- Выбор сохраняется локально и применяется без перезапуска.
+- При старте Navigator пытается прочитать StringTables установленной FH6 только для чтения: EN.zip / CHS.zip / RU.zip / MX.zip.
+- Для POI используется официальное игровое название выбранного языка; если точной строки нет, показывается английское игровое название. Машинный перевод названий POI не используется.
+- Автопоиск понимает дополнительные Steam Library и XboxGames/Forza Horizon 6/Content. Если FH6 всё равно не найдена, можно задать FH6_STRINGTABLES_DIR или FH6_PATH перед запуском.
+- В меню языка показывается фактическое покрытие официальных названий; unmatched POI остаются на английском.
+
+OFFLINE MAP DATA
+- Portable Launcher НЕ скачивает POI/road data/screenshots. Все используемые Planner/runtime данные встроены в EXE.
+- Прогресс запуска отображается прямо в окне launcher; raw log доступен только по запросу.
+- Старые BAT-файлы не входят в portable release.
+- Встроены 796 game POI + 27 curated scenic places + 457 road records / 6900 route nodes.
+- 24 скрытые машины имеют source-exact координаты; остальные 772 записи в этой pet-project сборке размещены детерминированно по встроенной дорожной геометрии ForzaLabs и сразу привязаны к WVAN.
+- Фоновые raster map tiles остаются отдельным online/cache механизмом и не участвуют в startup/rebuild.
+
+OFFLINE / ДАННЫЕ
+- Active Route, Draft, My Places, Favorites, Saved Routes и progress лежат в data\navigator.db
+- schema v1 автоматически мигрирует в v2 с backup в data\backups\
+- Runtime community images разрешены только как локальные /media/places/... файлы.
+- community evidence без доказанных FH6 world coordinates НЕ превращается в marker автоматически.
+
+DIRECTED WVAN
+- Проверенный compiled graph встроен.
+- Если legal directed path отсутствует, Planner/DRIVE работают fail-closed.
+- Legacy bidirectional shortestPath НЕ используется как fallback.
+
+ЕСЛИ ТЕЛЕФОН НЕ ПОДКЛЮЧАЕТСЯ
+Разреши FH6 Scenic Navigator/Python runtime в Windows Firewall для Private network или запусти allow_firewall.ps1 от администратора.
+
+Полное руководство Planner: PLANNER_RU.md

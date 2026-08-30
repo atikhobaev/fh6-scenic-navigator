@@ -1,0 +1,12 @@
+.worktrees/
+node_modules/
+__pycache__/
+*.pyc
+cache/
+*.nav
+*.owt
+*.oww
+*.owbs
+/data/
+
+.worktrees/
