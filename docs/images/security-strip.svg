@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="250" viewBox="0 0 1400 250" role="img" aria-labelledby="title desc">
+  <title id="title">Release verification pipeline</title>
+  <desc id="desc">Python, JavaScript, Go, SHA-256 and VirusTotal release checks</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071521"/><stop offset="1" stop-color="#0b1428"/></linearGradient></defs>
+  <rect width="1400" height="250" rx="24" fill="url(#bg)"/>
+  <text x="60" y="54" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="800" fill="#64748b" letter-spacing="2">RELEASE VERIFICATION</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">
+    <g transform="translate(60 86)"><rect width="236" height="104" rx="18" fill="#0d2030" stroke="#1e4355"/><circle cx="42" cy="40" r="18" fill="#083344"/><path d="m34 40 6 6 11-14" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="37" font-size="16" fill="#e2e8f0">Python</text><text x="72" y="60" font-size="13" fill="#64748b">regression suite</text></g>
+    <g transform="translate(316 86)"><rect width="236" height="104" rx="18" fill="#101d35" stroke="#263f68"/><circle cx="42" cy="40" r="18" fill="#142a4d"/><path d="m34 40 6 6 11-14" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="37" font-size="16" fill="#e2e8f0">JavaScript</text><text x="72" y="60" font-size="13" fill="#64748b">UI + routing tests</text></g>
+    <g transform="translate(572 86)"><rect width="236" height="104" rx="18" fill="#111b31" stroke="#344064"/><circle cx="42" cy="40" r="18" fill="#1b2442"/><path d="m34 40 6 6 11-14" fill="none" stroke="#818cf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="37" font-size="16" fill="#e2e8f0">Go</text><text x="72" y="60" font-size="13" fill="#64748b">test · race · vet</text></g>
+    <g transform="translate(828 86)"><rect width="236" height="104" rx="18" fill="#121b2c" stroke="#3e3d5b"/><circle cx="42" cy="40" r="18" fill="#28203c"/><path d="m34 40 6 6 11-14" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="37" font-size="16" fill="#e2e8f0">SHA-256</text><text x="72" y="60" font-size="13" fill="#64748b">published checksum</text></g>
+    <g transform="translate(1084 86)"><rect width="256" height="104" rx="18" fill="#121b2c" stroke="#31515d"/><circle cx="42" cy="40" r="18" fill="#12313a"/><path d="m34 40 6 6 11-14" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="72" y="37" font-size="16" fill="#e2e8f0">VirusTotal</text><text x="72" y="60" font-size="13" fill="#64748b">multi-engine report</text></g>
+  </g>
+</svg>
