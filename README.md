@@ -1,111 +1,180 @@
-# FH6 Scenic Navigator
+<div align="center">
 
-**Local companion navigator and route planner for Forza Horizon 6.**
+<img src="docs/images/readme-hero.svg" alt="FH6 Scenic Navigator — Drive, Plan, Discover" width="100%" />
 
-FH6 Scenic Navigator runs alongside the game and provides a clean external map, route planning, telemetry-driven navigation, and turn-by-turn guidance without requiring the in-game HUD. The current Windows release is distributed as a **single portable EXE** that opens the DRIVE / PLAN interface in the user's normal browser.
+<br />
 
-> Status: personal/private pet project. Not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
+[![CI](https://github.com/atikhobaev/fh6-scenic-navigator/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/atikhobaev/fh6-scenic-navigator/actions/workflows/ci.yml)
+[![Release security](https://github.com/atikhobaev/fh6-scenic-navigator/actions/workflows/release-security.yml/badge.svg)](https://github.com/atikhobaev/fh6-scenic-navigator/actions/workflows/release-security.yml)
+[![Latest release](https://img.shields.io/github/v/release/atikhobaev/fh6-scenic-navigator?display_name=tag&sort=semver&style=flat-square)](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest)
+![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb?style=flat-square&logo=windows11&logoColor=white)
+![Offline first](https://img.shields.io/badge/offline-first-0f766e?style=flat-square)
+![Places](https://img.shields.io/badge/runtime%20places-823-7c3aed?style=flat-square)
 
-## Highlights
+**A polished local companion navigator and route planner for FH6.**  
+Designed for a second monitor, tablet, or phone while the in-game HUD stays out of the way.
 
-- **DRIVE mode** — low-distraction navigation view for a second monitor, tablet, or phone.
-- **PLAN mode** — map-first route planner with search, filters, POI popovers, route editing, favorites, and saved routes.
-- **Directed WVAN routing** — authoritative routing uses a compiled directed graph derived from locally owned FH6 navigation data; no bidirectional fallback is used for active guidance when Directed WVAN is unavailable.
-- **823 runtime places** — 796 game POIs plus 27 curated scenic destinations in the current catalog.
-- **Multilingual UI** — English, Simplified Chinese, Russian, and Latin American Spanish.
-- **Official game-name localization where provable** — StringTables are read locally when FH6 is installed; unresolved POIs safely fall back to English rather than being machine-translated or guessed.
-- **Portable Windows launcher** — one EXE, embedded CPython runtime, live startup status/logs, single-instance behavior, and clean child-process lifecycle management.
-- **Offline-first runtime data** — POI catalogs, Directed WVAN graph, UI assets, and cached media are bundled; no runtime POI scraping is required.
+[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🛡️ Security](SECURITY.md)
 
-## Latest release — v1.19.2
+<br />
 
-The current portable launcher focuses on process lifecycle reliability:
+<a href="https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe">
+  <img src="docs/images/download-latest.svg" alt="Download the latest portable Windows release" width="620" />
+</a>
 
-- Navigator's Python process is attached to a Windows Job Object with `KILL_ON_JOB_CLOSE`.
-- Closing the launcher stops Navigator instead of leaving an orphan server on port 8080.
-- Stop is asynchronous so the Win32 UI remains responsive.
-- Startup can recover a stale previous Navigator process only after proving that it belongs to this application.
-- Unrelated applications using the configured HTTP port are never terminated automatically.
+<br />
 
-Download the executable from **GitHub Releases** after this repository is published.
+</div>
 
-## Quick start
+> [!NOTE]
+> FH6 Scenic Navigator is a personal/private pet project and is not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
 
-### Portable release
+## ✨ What it does
 
-1. Download `FH6_Scenic_Navigator_v1.19.2_PORTABLE_PROCESS_LIFECYCLE_FIX.exe` from Releases.
-2. Run it on Windows 10/11 x64.
+<img src="docs/images/feature-strip.svg" alt="Drive mode, Plan mode and offline map data" width="100%" />
+
+- 🧭 **DRIVE mode** — low-distraction telemetry navigation with road-following routes, target names, turn prompts, distance guidance, auto zoom, and rerouting behavior.
+- 🗺️ **PLAN mode** — map-first route planning with search, grouped filters, POI popovers, favorites, custom places, route ordering, reverse/optimize tools, and import/export.
+- 🛣️ **Directed WVAN routing** — active guidance uses `fh6-navgraph-v1`, compiled from locally owned FH6 navigation data with directed road legality instead of guessing bidirectional roads.
+- 📍 **823 runtime places** — 796 game POIs plus 27 curated scenic destinations in the current catalog.
+- 🌍 **Localized UI** — English, Simplified Chinese, Russian, and Latin American Spanish. Official game-name localization is used only where it can be proven; otherwise the app safely falls back to English.
+- 📦 **Portable Windows launcher** — one GUI EXE with the Navigator payload and official CPython 3.13.5 x64 embeddable runtime included.
+- 📴 **Offline-first runtime** — bundled POIs, navigation graph, UI assets, and cached data. No runtime POI scraping is required.
+
+## ⬇️ Download & verify
+
+<!-- RELEASE_STATUS_START -->
+### ✅ Latest release: `v1.19.2`
+
+| Download | Integrity | Malware scan |
+| --- | --- | --- |
+| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | **VirusTotal:** ⏳ waiting for `VT_API_KEY` setup |
+
+Current verified source-release SHA-256:
+
+```text
+b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258
+```
+
+[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.19.2) · [VirusTotal report by SHA-256](https://www.virustotal.com/gui/file/b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258)
+<!-- RELEASE_STATUS_END -->
+
+> [!IMPORTANT]
+> The release-security workflow publishes a stable download alias and `.sha256` file for every release. Once the repository secret `VT_API_KEY` is configured, every published EXE is also submitted to VirusTotal and the result is written back into this block automatically. VirusTotal is an external multi-engine signal, **not a guarantee that software is safe**.
+
+### Verify manually on Windows
+
+```powershell
+Get-FileHash .\FH6_Scenic_Navigator_Windows_x64.exe -Algorithm SHA256
+```
+
+Compare the result with the adjacent `.sha256` asset in the same GitHub Release.
+
+## 🧪 Automated checks
+
+<img src="docs/images/security-strip.svg" alt="Python, JavaScript, Go, SHA-256 and VirusTotal checks" width="100%" />
+
+Every push to `main` and every pull request runs separate checks so a failure is easy to identify:
+
+| Check | What it validates |
+| --- | --- |
+| 🐍 **Python tests** | server, planner, routing, catalog, localization, launcher integration |
+| 🟨 **JavaScript tests** | DRIVE/PLAN UI structure, routing logic, layers, popovers, i18n |
+| 🐹 **Go tests** | native launcher behavior plus `go vet` and race detector |
+| 🧹 **Repository hygiene** | no raw `.nav/.owt/.oww/.owbs` game assets and no committed `.exe` binaries |
+| 🔐 **Release integrity** | stable asset alias + SHA-256 checksum attached to every release |
+| 🛡️ **VirusTotal** | EXE submitted after publishing when `VT_API_KEY` is configured |
+
+See [`SECURITY.md`](SECURITY.md) for the exact verification policy.
+
+## 🚀 Quick start
+
+1. Download the latest **Windows x64 portable EXE** using the button above.
+2. Run the launcher on Windows 10/11 x64.
 3. Click **Start Navigator**.
-4. Open **DRIVE** or **PLAN** from the launcher.
-5. In Forza Horizon 6 enable Data Out and use the IP/UDP port shown by the launcher.
+4. Open **DRIVE** for navigation or **PLAN** for route planning.
+5. In FH6, enable Data Out and use the IP/UDP port shown by the launcher.
 
-The portable build contains the official CPython 3.13.5 embeddable runtime and does not require a separate Python installation.
+No separate Python installation is required for the portable build.
 
-### Run from source
+## 🧩 Architecture
 
-For development, Python 3.10+ is sufficient for the server/runtime code. Go is required only to build the native Windows launcher.
+```text
+FH6 Data Out (UDP)
+        │
+        ▼
+  Python server ───── Directed WVAN graph / POI catalog / SQLite
+        │
+        ├── /          → DRIVE
+        ├── /planner/  → PLAN
+        └── /api/*     → navigation / routes / places
+
+Native Windows launcher (Go / Win32)
+        │
+        ├── embedded CPython runtime
+        ├── embedded Navigator payload
+        ├── process lifecycle / stale-process recovery
+        └── logs / status / browser launch
+```
+
+### Routing authority
+
+The active navigation path is produced from `fh6-navgraph-v1`, a directed graph compiled from locally owned FH6 WVAN navigation data. Raw game-owned `.nav`, `.owt`, `.oww`, and `.owbs` files are intentionally excluded from source and releases.
+
+## 🛠️ Run from source
+
+Python 3.10+ is sufficient for the server/runtime code. Go is only required to build/test the native launcher. Node.js is used for JavaScript tests and Tailwind tooling.
 
 ```bash
 python launcher.py
 ```
 
-The browser UI is plain HTML/CSS/JavaScript. Node.js is only used for the JavaScript test suite and Tailwind build tooling; it is not required by end users.
-
-## Architecture
-
-```text
-FH6 Data Out (UDP)
-        |
-        v
-   Python server  ---- Directed WVAN graph / POI catalog / SQLite
-        |
-        +---- /            -> DRIVE
-        +---- /planner/    -> PLAN
-        +---- /api/*       -> navigation / route / places APIs
-
-Windows portable launcher (Go / Win32)
-        |
-        +---- embedded CPython runtime
-        +---- embedded Navigator payload
-        +---- process lifecycle / logs / status / browser launch
-```
-
-### Routing authority
-
-The active navigation path is produced from `fh6-navgraph-v1`, a directed graph compiled from locally owned FH6 WVAN navigation data. The repository contains only the compiled application representation and non-copyrightable validation fingerprints; raw game-owned `.nav`, `.owt`, `.oww`, and `.owbs` files are intentionally excluded.
-
-## Repository layout
-
-```text
-cmd/fh6-launcher/          native Windows launcher entrypoint
-launcher_native/          launcher UI, runtime extraction, lifecycle and tests
-fh6_nav/                  WVAN parsing / compiled graph tooling
-static/                   DRIVE / PLAN frontend, i18n, POI catalogs and assets
-tools/                    build-time import / catalog tools
-tests/                    Python and JavaScript regression suites
-server.py                 local HTTP + telemetry server
-launcher.py               source/development startup wrapper
-docs/superpowers/         design specifications and implementation plans
-```
-
-## Tests
+Run the full verification suites with:
 
 ```bash
+python -m pip install pytest
 python -m unittest discover -s tests -p 'test_*.py'
 npm run test:js
 go test ./...
+go test -race ./...
+go vet ./...
 ```
 
-The release process also validates catalog integrity, Directed WVAN availability, HTTP health, embedded payloads, and the absence of raw FH6 navigation assets.
+## 📁 Repository layout
 
-## Data and third-party sources
+```text
+cmd/fh6-launcher/          native Windows launcher entrypoint
+launcher_native/          launcher UI, extraction, process lifecycle, tests
+fh6_nav/                  WVAN parsing / compiled graph tooling
+static/                   DRIVE / PLAN frontend, i18n, data and assets
+tools/                    build-time catalog/import tooling
+tests/                    Python + JavaScript regression suites
+scripts/                  build and release validation helpers
+docs/                     design docs, artwork and release checklist
+server.py                 local HTTP + telemetry server
+launcher.py               source/development startup wrapper
+```
 
-The project uses public factual map/location references and locally owned game data for interoperability and navigation research. Runtime catalogs retain provenance where applicable. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for details.
+## 📚 Documentation
 
-No raw FH6 game navigation files are distributed in this repository or releases.
+- 🇷🇺 [`README_RU.md`](README_RU.md) — extended Russian technical history
+- 📝 [`CHANGELOG.md`](CHANGELOG.md) — reconstructed project version history
+- 🚦 [`HOW_TO_START.txt`](HOW_TO_START.txt) — startup notes
+- 🗺️ [`PLANNER_RU.md`](PLANNER_RU.md) — planner documentation
+- 🧭 [`GAME_NAV_PROBE_RU.md`](GAME_NAV_PROBE_RU.md) — game navigation probing notes
+- 🔬 [`NAV_BINARY_PROBE_RU.md`](NAV_BINARY_PROBE_RU.md) — binary navigation investigation
+- 🛡️ [`SECURITY.md`](SECURITY.md) — release verification and VirusTotal policy
+- ✅ [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md) — repeatable release checklist
+- 📜 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) — third-party notices and data provenance
 
-## Version history
+## 📜 Data & third-party sources
 
-See [`CHANGELOG.md`](CHANGELOG.md) for the reconstructed development history from the project chats, design documents, release artifacts, and Git history.
+The project uses public factual map/location references and locally owned game data for interoperability and navigation research. Runtime catalogs retain provenance where applicable. No raw FH6 game navigation files are distributed in this repository or releases.
 
-For the longer Russian technical notes, see [`README_RU.md`](README_RU.md).
+<div align="center">
+
+---
+
+**🌄 Drive calm · plan the scenic route · keep the HUD clean**
+
+</div>
