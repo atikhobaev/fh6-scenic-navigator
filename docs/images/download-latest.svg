@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="132" viewBox="0 0 760 132" role="img" aria-labelledby="title desc">
+  <title id="title">Download FH6 Scenic Navigator for Windows</title>
+  <desc id="desc">Download button for the latest portable Windows build</desc>
+  <rect x="8" y="8" width="744" height="116" rx="24" fill="#087f5b" stroke="#34d399" stroke-width="2"/>
+  <rect x="17" y="17" width="726" height="98" rx="18" fill="#0b6b50" stroke="#6ee7b7" stroke-opacity="0.3"/>
+  <g transform="translate(42 34)" fill="none" stroke="#ecfdf5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M31 2v38"/><path d="m18 28 13 13 13-13"/><path d="M10 57h42"/></g>
+  <text x="118" y="57" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="800" fill="#ffffff">DOWNLOAD FOR WINDOWS</text>
+  <text x="119" y="88" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#d1fae5">Latest portable x64 release · no Python install required</text>
+  <g transform="translate(630 39)"><rect width="82" height="54" rx="13" fill="#064e3b" stroke="#6ee7b7" stroke-opacity="0.55"/><text x="41" y="23" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" fill="#d1fae5">PORTABLE</text><text x="41" y="41" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" fill="#ffffff">EXE</text></g>
+</svg>
