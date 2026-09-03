@@ -11,7 +11,7 @@
 ![Offline first](https://img.shields.io/badge/offline-first-0f766e?style=flat-square)
 ![Places](https://img.shields.io/badge/runtime%20places-823-7c3aed?style=flat-square)
 
-**A polished local companion navigator and route planner for FH6.**  
+**A polished local companion navigator and route planner for Forza Horizon 6.**  
 Designed for a second monitor, tablet, or phone while the in-game HUD stays out of the way.
 
 [🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md)
