@@ -29,6 +29,10 @@ Designed for a second monitor, tablet, or phone while the in-game HUD stays out 
 > [!NOTE]
 > FH6 Scenic Navigator is a personal pet project and is not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
 
+☕ If you enjoyed the video and want to support more content, you can buy me a coffee here:
+https://dalink.to/bazaz
+Thank you for supporting me ❤️
+
 ## ✨ What it does
 
 <img src="docs/images/feature-strip.svg" alt="Drive mode, Plan mode and offline map data" width="100%" />
