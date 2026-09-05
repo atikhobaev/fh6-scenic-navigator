@@ -2,6 +2,16 @@
 
 This history was reconstructed from the project's working chats, saved design/specification files, release artifacts, and the local Git history. Entries describe confirmed user-visible or architectural changes; experimental ideas that were only discussed and not shipped are omitted.
 
+## [1.20.0] - Unreleased — Public Preview
+
+- Licensed original code under MIT, with explicit third-party/data exclusions and bundled license notices.
+- Added real application captures, a social preview and a user-focused Russian introduction.
+- Clarified POI accuracy, map caching and code/data licensing boundaries.
+- Closed SQLite connections deterministically on Windows, including the migration test fixture.
+- Enabled full pytest collection and Windows Python CI.
+- Isolated the Linux FIFO regression test so the Go suite compiles on Windows.
+- Copied native Win32 message structures through RtlMoveMemory to avoid integer-to-Go-pointer conversions flagged by go vet.
+
 ## [1.19.2] - 2026-08-30 — Process Lifecycle Fix
 
 - Attached the Navigator Python process to a Windows Job Object with `JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE`.

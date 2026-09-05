@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const AppVersion = "1.19.2"
+const AppVersion = "1.20.0"
 
 type Controller struct {
 	Model        *Model

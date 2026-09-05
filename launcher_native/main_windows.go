@@ -143,16 +143,19 @@ func wndProc(hwnd syscall.Handle, msg uint32, wparam, lparam uintptr) uintptr {
 		}
 		return 0
 	case WM_GETMINMAXINFO:
-		info := (*MINMAXINFO)(unsafe.Pointer(lparam))
+		var info MINMAXINFO
+		pCopyMemory.Call(uintptr(unsafe.Pointer(&info)), lparam, unsafe.Sizeof(info))
 		dpi, _, _ := pGetDpiForWindow.Call(uintptr(hwnd))
 		if dpi == 0 {
 			dpi = 96
 		}
 		mw, mh := MinimumWindowLogicalSize()
 		info.PtMinTrackSize = POINT{X: int32(mw * int(dpi) / 96), Y: int32(mh * int(dpi) / 96)}
+		pCopyMemory.Call(lparam, uintptr(unsafe.Pointer(&info)), unsafe.Sizeof(info))
 		return 0
 	case WM_DPICHANGED:
-		r := (*RECT)(unsafe.Pointer(lparam))
+		var r RECT
+		pCopyMemory.Call(uintptr(unsafe.Pointer(&r)), lparam, unsafe.Sizeof(r))
 		pSetWindowPos.Call(uintptr(hwnd), 0, uintptr(r.Left), uintptr(r.Top), uintptr(r.Right-r.Left), uintptr(r.Bottom-r.Top), 0x0004)
 		return 0
 	case WM_CLOSE:

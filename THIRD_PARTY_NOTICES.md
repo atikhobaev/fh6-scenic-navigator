@@ -1,6 +1,6 @@
 # Third-party notices / references
 
-This project is an independent utility and does not bundle Forza Horizon 6 game assets or map tiles.
+This project is an independent utility and does not bundle raw Forza Horizon 6 navigation files or map tile sets. It does bundle a compiled graph derived from game navigation data and third-party road/catalog snapshots; these have separate provenance and are not covered by the original-code MIT license.
 
 Technical references used for interoperability:
 
@@ -14,3 +14,7 @@ Technical references used for interoperability:
 - MapGenie — map tile service. Tiles are fetched/cache on demand and are not bundled.
 
 Forza Horizon and related marks are property of their respective owners. This project is not affiliated with or endorsed by Microsoft, Xbox, Playground Games, ForzaLabs, Forza Horizon Hub, ForzaHorizon.app, or MapGenie.
+
+See [the provenance review](docs/PROVENANCE_REVIEW.md) for scope and unresolved permissions. Full reference-code notices are included in [fh6-tel MIT](static/licenses/fh6-tel-MIT.txt), [ForzaDrive MIT](static/licenses/forza-drive-MIT.txt), and [Go runtime](static/licenses/Go.txt). The embedded CPython runtime retains its own LICENSE.txt.
+
+Original project code: [MIT](LICENSE). See [LICENSE_SCOPE.md](LICENSE_SCOPE.md) for exclusions.

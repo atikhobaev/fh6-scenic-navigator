@@ -2,8 +2,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-VERSION="1.19.2"
-OUT="${1:-/mnt/data/FH6_Scenic_Navigator_v1.19.2_PORTABLE_LAUNCHER.exe}"
+VERSION="1.20.0"
+OUT="${1:-/mnt/data/FH6_Scenic_Navigator_v1.20.0_PORTABLE_LAUNCHER.exe}"
 PY_EMBED="${FH6_PYTHON_EMBED_ZIP:-}"
 ASSET="$ROOT/launcher_native/assets/python_embed.zip"
 EXPECTED_PY_SHA="7d2650fd9d1b9d002d4a315d5f354247fd6a44f30517c7ef577b08f57a0fb6d9"

@@ -16,7 +16,7 @@
 **Live telemetry navigation + scenic route planning on a second monitor, tablet, phone, or another PC.**  
 Keep the in-game HUD clean while your route, next turn, destination and map live somewhere else.
 
-[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md) · [☕ Buy me a coffee](https://dalink.to/bazaz)
+[🇷🇺 На русском](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md) · [☕ Buy me a coffee](https://dalink.to/bazaz)
 
 <br />
 
@@ -41,6 +41,17 @@ So I built a separate navigator for myself: **the game stays HUD-free, while nav
 
 What started as a small second-screen experiment eventually grew into a full route planner with live telemetry, scenic destinations, rerouting and directed road-aware navigation.
 
+## 🖥️ FH6 Scenic Navigator in action
+
+![PLAN: Grand Tour Japan route, map filters and scenic destinations](docs/images/screenshots/plan.png)
+
+**PLAN** — explore the map, choose stops and build a road-aware route before you drive.
+
+![DRIVE: car position, active route and turn guidance](docs/images/screenshots/drive.png)
+
+**DRIVE** — keep the route and next turn on a separate screen while the game stays HUD-free.
+These are captures of the running v1.20.0 preview UI. DRIVE uses controlled test telemetry, not a live gameplay capture. Map imagery: MapGenie / respective game owners.
+
 ## ✨ What it does
 
 <img src="docs/images/feature-strip.svg" alt="Drive mode, Plan mode and offline map data" width="100%" />
@@ -48,17 +59,17 @@ What started as a small second-screen experiment eventually grew into a full rou
 - 🧭 **DRIVE mode** — low-distraction telemetry navigation with road-following routes, target names, turn prompts, distance guidance, auto zoom and rerouting behavior.
 - 🗺️ **PLAN mode** — map-first route planning with search, grouped filters, POI popovers, favorites, custom places, route ordering, reverse/optimize tools and import/export.
 - 🛣️ **Directed WVAN routing** — active guidance uses `fh6-navgraph-v1`, compiled from locally owned FH6 navigation data with directed road legality instead of guessing that every road works both ways.
-- 📍 **823 runtime places** — 796 game POIs plus 27 curated scenic destinations in the current catalog.
+- 📍 **823 catalog entries** — 796 game POI records plus 27 curated scenic destinations. **Preview limitation:** 772 game records use approximate road-network positions; only 24 retain source-exact coordinates. Use these layers for exploration, not precise collectible hunting.
 - 🌍 **Localized UI** — English, Simplified Chinese, Russian and Latin American Spanish. Official game-name localization is used only where it can be proven; otherwise the app safely falls back to English.
 - 📱 **Second-screen friendly** — open Navigator from a phone, tablet or another PC on the same LAN.
 - 📦 **Portable Windows launcher** — one GUI EXE with the Navigator payload and official CPython 3.13.5 x64 embeddable runtime included.
-- 📴 **Offline-first runtime** — bundled POIs, navigation graph, UI assets and cached data. No runtime POI scraping is required.
+- 📴 **Offline-first runtime** — bundled POIs, navigation graph and UI assets. Map imagery needs an initial internet connection and is cached locally; uncached areas are unavailable offline. No runtime POI scraping is required.
 
 ## ⚡ Quick start
 
 1. **Download** the latest portable Windows EXE using the button above.
 2. Run `FH6_Scenic_Navigator_Windows_x64.exe` and click **Start Navigator**.
-3. In FH6 enable **Settings → HUD and Gameplay → Data Out** and set port **1234**.
+3. In FH6 enable **Settings → HUD and Gameplay → Data Out** and set **Data Out = ON**, the launcher’s host IP, and port **1234**.
 4. Open **DRIVE** while driving or **PLAN** to build a route first.
 
 Want Navigator on another screen? Open the LAN address shown by the launcher from a phone, tablet or second PC on the same network.
@@ -80,7 +91,7 @@ Want Navigator on another screen? Open the LAN address shown by the launcher fro
 b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258
 ```
 
-[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.19.2) · [VirusTotal report by SHA-256](https://www.virustotal.com/gui/file/b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258)
+[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.19.2)
 <!-- RELEASE_STATUS_END -->
 
 > [!IMPORTANT]
@@ -316,3 +327,7 @@ The project uses public factual map/location references and locally owned game d
 **[☕ Buy me a coffee](https://dalink.to/bazaz)**
 
 </div>
+
+## License
+
+The original code is licensed under the [MIT License](LICENSE). Third-party code, game-derived data and map imagery retain their own terms; see [license scope](LICENSE_SCOPE.md), the [provenance review](docs/PROVENANCE_REVIEW.md) and [third-party notices](THIRD_PARTY_NOTICES.md).

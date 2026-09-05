@@ -46,7 +46,7 @@ test('SVG flag button treats clicks on its child image as clicks inside the lang
   assert.doesNotMatch(source,/e\.target!==button/);
 });
 
-test('server API version matches the visible v1.19.2 build label', () => {
+test('server API version matches the visible v1.20.0 build label', () => {
   const server=read('server.py');
-  assert.match(server,/APP_VERSION\s*=\s*['"]1\.19\.2['"]/);
+  assert.match(server,/APP_VERSION\s*=\s*['"]1\.20\.0['"]/);
 });

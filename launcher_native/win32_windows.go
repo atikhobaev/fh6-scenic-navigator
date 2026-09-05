@@ -53,6 +53,9 @@ type NOTIFYICONDATA struct {
 var user32 = syscall.NewLazyDLL("user32.dll")
 var gdi32 = syscall.NewLazyDLL("gdi32.dll")
 var kernel32 = syscall.NewLazyDLL("kernel32.dll")
+
+// Copy OS-owned message structures without converting integer addresses to Go pointers.
+var pCopyMemory = kernel32.NewProc("RtlMoveMemory")
 var dwmapi = syscall.NewLazyDLL("dwmapi.dll")
 var (
 	pRegisterClassEx  = user32.NewProc("RegisterClassExW")

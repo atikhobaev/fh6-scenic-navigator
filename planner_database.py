@@ -11,6 +11,16 @@ import uuid
 SCHEMA_VERSION = 2
 
 
+class ClosingConnection(sqlite3.Connection):
+    """Commit/rollback on context exit, then release the Windows file handle."""
+
+    def __exit__(self, *args):
+        try:
+            return super().__exit__(*args)
+        finally:
+            self.close()
+
+
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
@@ -21,7 +31,7 @@ class PlannerDatabase:
         self.backup_dir = self.path.parent / 'backups'
 
     def connect(self) -> sqlite3.Connection:
-        con = sqlite3.connect(self.path)
+        con = sqlite3.connect(self.path, factory=ClosingConnection)
         con.row_factory = sqlite3.Row
         con.execute('PRAGMA foreign_keys=ON')
         con.execute('PRAGMA journal_mode=WAL')
@@ -64,7 +74,7 @@ class PlannerDatabase:
 
     def _probe_version(self) -> int:
         try:
-            with sqlite3.connect(self.path) as con:
+            with sqlite3.connect(self.path, factory=ClosingConnection) as con:
                 row = con.execute("select value from app_state where key='schema_version'").fetchone()
                 return int(row[0]) if row else 0
         except sqlite3.Error:
@@ -84,7 +94,7 @@ class PlannerDatabase:
         navigation session from using built-in routes that intentionally do not
         live in the user-owned routes table.
         """
-        con = sqlite3.connect(self.path)
+        con = sqlite3.connect(self.path, factory=ClosingConnection)
         try:
             con.execute('PRAGMA foreign_keys=OFF')
             con.execute('BEGIN IMMEDIATE')

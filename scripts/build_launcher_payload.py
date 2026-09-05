@@ -15,6 +15,7 @@ def should_include(p:Path)->bool:
     if p.name in EXCLUDED_NAMES: return False
     if '__pycache__' in rel.parts or p.suffix in {'.pyc','.pyo'}: return False
     if rel.parts[0]=='static' or rel.parts[0]=='fh6_nav': return p.is_file()
+    if rel.as_posix() == 'LICENSE': return p.is_file()
     return len(rel.parts)==1 and p.suffix.lower() in ALLOWED_TOP_EXT and p.is_file()
 
 def build(out:Path,version:str)->dict:
@@ -32,6 +33,6 @@ def build(out:Path,version:str)->dict:
     return {'version':version,'files':len(files),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--out',default='launcher_native/assets/app_payload.zip');ap.add_argument('--version',default='1.19.2');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--out',default='launcher_native/assets/app_payload.zip');ap.add_argument('--version',default='1.20.0');a=ap.parse_args()
     report=build(ROOT/a.out,a.version)
     print(json.dumps(report,indent=2))

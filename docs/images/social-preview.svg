@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#15112f"/></linearGradient><radialGradient id="glow"><stop stop-color="#155e75" stop-opacity=".65"/><stop offset="1" stop-color="#07111f" stop-opacity="0"/></radialGradient><linearGradient id="route"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs>
+<rect width="1280" height="640" fill="url(#bg)"/><ellipse cx="225" cy="100" rx="550" ry="420" fill="url(#glow)"/>
+<g fill="none" stroke="#52657e" opacity=".2"><path d="M-20 440Q200 290 430 440T900 430T1350 330"/><path d="M-20 475Q200 325 430 475T900 465T1350 365"/><path d="M-20 510Q200 360 430 510T900 500T1350 400"/><path d="M-20 545Q200 395 430 545T900 535T1350 435"/></g>
+<path d="M825 435C745 365 810 290 912 333S1065 310 1035 238S1100 155 1195 185" fill="none" stroke="url(#route)" stroke-width="8" stroke-linecap="round"/>
+<g fill="#0a1527" stroke-width="4"><circle cx="825" cy="435" r="13" stroke="#22d3ee"/><circle cx="912" cy="333" r="9" stroke="#60a5fa"/><circle cx="1195" cy="185" r="14" stroke="#a78bfa"/></g>
+<g font-family="Segoe UI,Arial,sans-serif"><rect x="72" y="70" width="210" height="36" rx="18" fill="#102738" stroke="#26536a"/><text x="94" y="94" font-size="14" font-weight="700" fill="#8ce9dd" letter-spacing="2">SECOND-SCREEN GPS</text>
+<text x="68" y="208" font-size="65" font-weight="800" fill="#f8fafc" letter-spacing="-2">FH6 SCENIC</text><text x="68" y="280" font-size="65" font-weight="800" fill="#f8fafc" letter-spacing="-2">NAVIGATOR</text>
+<text x="72" y="354" font-size="36" font-weight="500" fill="#b8d7e7">HUD-free navigation</text><text x="74" y="403" font-size="24" fill="#93a7be">Drive · Plan · Discover</text>
+<rect x="72" y="511" width="350" height="51" rx="12" fill="#0d2133" stroke="#264359"/><text x="95" y="543" font-size="18" fill="#bfe5ed">FORZA HORIZON 6 · WINDOWS</text><text x="1194" y="553" text-anchor="end" font-size="15" fill="#71849c">FH6 Scenic Navigator</text></g></svg>
