@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="docs/images/readme-hero.png" alt="FH6 Scenic Navigator — Enjoy the road. Leave the HUD behind." width="100%" />
+<a href="https://dalink.to/bazaz">
+  <img src="docs/images/readme-hero.png" alt="FH6 Scenic Navigator — Enjoy the road. Leave the HUD behind." width="100%" />
+</a>
 
 <br />
 
