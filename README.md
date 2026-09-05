@@ -29,7 +29,7 @@ Keep the in-game HUD clean while your route, next turn, destination and map live
 **Windows 10/11 x64 · Portable · No installer · No separate Python setup**
 
 <a href="https://dalink.to/bazaz">
-  <img src="docs/images/support-coffee.png" alt="Buy the developer a coffee — support FH6 Scenic Navigator" width="620" />
+  <img src="docs/images/support-coffee.png" alt="Buy the developer a coffee — support FH6 Scenic Navigator" width="100%" />
 </a>
 
 <sub>Enjoy the cruise? Help keep this independent project rolling.</sub>
