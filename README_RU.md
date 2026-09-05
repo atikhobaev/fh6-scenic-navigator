@@ -7,7 +7,7 @@
 Windows 10/11 x64 · Один EXE · Без установки и отдельного Python.
 
 <a href="https://dalink.to/bazaz">
-  <img src="docs/images/support-pit-stop-ru.svg" alt="Заправить проект — поддержать разработку / Buy me a coffee" width="620" />
+  <img src="docs/images/support-coffee.png" alt="Поддержать разработчика FH6 Scenic Navigator — купить кофе" width="620" />
 </a>
 
 Нравятся поездки с Navigator? Помогите проекту двигаться дальше.
