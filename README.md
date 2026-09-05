@@ -79,7 +79,7 @@ Want Navigator on another screen? Open the LAN address shown by the launcher fro
 ## ⬇️ Download & verify
 
 <!-- RELEASE_STATUS_START -->
-### ✅ Latest release: `v1.19.2`
+### ✅ Latest release: `v1.20.0`
 
 | Download | Integrity | Malware scan |
 | --- | --- | --- |
@@ -88,10 +88,10 @@ Want Navigator on another screen? Open the LAN address shown by the launcher fro
 **SHA-256**
 
 ```text
-b572350fc09db34e6a601600ceb064e82ad2f9c70c87277b5e7d8bd1f34f8258
+0fc438f25ad998bb5f9f457e46457168ea59083e3148a2b755f7d2022b4e9278
 ```
 
-[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.19.2)
+[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.20.0)
 <!-- RELEASE_STATUS_END -->
 
 > [!IMPORTANT]
