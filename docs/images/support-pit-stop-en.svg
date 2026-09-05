@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="132" viewBox="0 0 760 132" role="img" aria-labelledby="title desc">
+<title id="title">Support FH6 Scenic Navigator — Buy me a coffee</title><desc id="desc">Support the garage behind your navigator. A neon motorsport pit-stop button with a sports car and racing stripes.</desc>
+<defs><linearGradient id="accent" x2="1" y2="0"><stop stop-color="#ff267e"/><stop offset="1" stop-color="#ffac46"/></linearGradient><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#241129"/><stop offset="1" stop-color="#111727"/></linearGradient></defs>
+<rect x="2" y="2" width="756" height="128" rx="18" fill="url(#bg)" stroke="url(#accent)" stroke-width="3"/>
+<path d="M22 3h115l-48 126H22Q3 129 3 110V22Q3 3 22 3Z" fill="url(#accent)"/>
+<path d="M126 3h9L87 129h-9Z M144 3h5l-48 126h-5Z" fill="#ff5784" opacity=".35"/>
+<g transform="translate(17 43)" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m3 31 3-13 17-4L34 3h20l15 15 7 4v12H3Z"/><path d="m26 15 10-8h15l10 11H25Z"/><circle cx="19" cy="33" r="7" fill="#c82a64"/><circle cx="61" cy="33" r="7" fill="#c82a64"/><path d="M8 23h9m48 1h8"/></g>
+<text x="157" y="31" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="800" letter-spacing="3" fill="#ffad9f">COMMUNITY PIT STOP</text>
+<text x="154" y="68" font-family="Segoe UI,Arial,sans-serif" font-size="30" font-style="italic" font-weight="900" fill="#fff">FUEL THE NEXT DRIVE</text>
+<text x="157" y="97" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#ded4e3">Support the garage behind your navigator</text>
+<path d="m679 45 21 21-21 21m21-21h-43" fill="none" stroke="#ff925d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
