@@ -11,10 +11,12 @@
 ![Offline first](https://img.shields.io/badge/offline-first-0f766e?style=flat-square)
 ![Places](https://img.shields.io/badge/runtime%20places-823-7c3aed?style=flat-square)
 
-**A polished local companion navigator and route planner for Forza Horizon 6.**  
-Designed for a second monitor, tablet, or phone while the in-game HUD stays out of the way.
+## 🧭 HUD-free navigation for Forza Horizon 6
 
-[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md)
+**Live telemetry navigation + scenic route planning on a second monitor, tablet, phone, or another PC.**  
+Keep the in-game HUD clean while your route, next turn, destination and map live somewhere else.
+
+[🇷🇺 Русская техническая документация](README_RU.md) · [📝 Changelog](CHANGELOG.md) · [🧠 Engineering story](docs/ENGINEERING_NOTES.md) · [🛡️ Security](SECURITY.md) · [☕ Buy me a coffee](https://dalink.to/bazaz)
 
 <br />
 
@@ -22,28 +24,46 @@ Designed for a second monitor, tablet, or phone while the in-game HUD stays out 
   <img src="docs/images/download-latest.svg" alt="Download the latest portable Windows release" width="620" />
 </a>
 
-<br />
+**Windows 10/11 x64 · Portable · No installer · No separate Python setup**
 
 </div>
 
 > [!NOTE]
 > FH6 Scenic Navigator is a personal pet project and is not affiliated with Microsoft, Xbox, Playground Games, Turn 10 Studios, or the Forza brand.
 
-☕ If you enjoyed and want to support, you can buy me a coffee here:
-https://dalink.to/bazaz
-Thank you for supporting me ❤️
+## 🌄 Why I built it
+
+I like driving around Forza Horizon with the HUD completely turned off. It makes cruising feel cleaner, more immersive and more relaxing.
+
+The problem is that I am also used to setting a destination and following a route. With the HUD disabled, I kept opening the map or turning navigation back on — which defeated the whole point.
+
+So I built a separate navigator for myself: **the game stays HUD-free, while navigation runs on a second monitor, tablet, phone, or another PC on the same network.**
+
+What started as a small second-screen experiment eventually grew into a full route planner with live telemetry, scenic destinations, rerouting and directed road-aware navigation.
 
 ## ✨ What it does
 
 <img src="docs/images/feature-strip.svg" alt="Drive mode, Plan mode and offline map data" width="100%" />
 
-- 🧭 **DRIVE mode** — low-distraction telemetry navigation with road-following routes, target names, turn prompts, distance guidance, auto zoom, and rerouting behavior.
-- 🗺️ **PLAN mode** — map-first route planning with search, grouped filters, POI popovers, favorites, custom places, route ordering, reverse/optimize tools, and import/export.
-- 🛣️ **Directed WVAN routing** — active guidance uses `fh6-navgraph-v1`, compiled from locally owned FH6 navigation data with directed road legality instead of guessing bidirectional roads.
+- 🧭 **DRIVE mode** — low-distraction telemetry navigation with road-following routes, target names, turn prompts, distance guidance, auto zoom and rerouting behavior.
+- 🗺️ **PLAN mode** — map-first route planning with search, grouped filters, POI popovers, favorites, custom places, route ordering, reverse/optimize tools and import/export.
+- 🛣️ **Directed WVAN routing** — active guidance uses `fh6-navgraph-v1`, compiled from locally owned FH6 navigation data with directed road legality instead of guessing that every road works both ways.
 - 📍 **823 runtime places** — 796 game POIs plus 27 curated scenic destinations in the current catalog.
-- 🌍 **Localized UI** — English, Simplified Chinese, Russian, and Latin American Spanish. Official game-name localization is used only where it can be proven; otherwise the app safely falls back to English.
+- 🌍 **Localized UI** — English, Simplified Chinese, Russian and Latin American Spanish. Official game-name localization is used only where it can be proven; otherwise the app safely falls back to English.
+- 📱 **Second-screen friendly** — open Navigator from a phone, tablet or another PC on the same LAN.
 - 📦 **Portable Windows launcher** — one GUI EXE with the Navigator payload and official CPython 3.13.5 x64 embeddable runtime included.
-- 📴 **Offline-first runtime** — bundled POIs, navigation graph, UI assets, and cached data. No runtime POI scraping is required.
+- 📴 **Offline-first runtime** — bundled POIs, navigation graph, UI assets and cached data. No runtime POI scraping is required.
+
+## ⚡ Quick start
+
+1. **Download** the latest portable Windows EXE using the button above.
+2. Run `FH6_Scenic_Navigator_Windows_x64.exe` and click **Start Navigator**.
+3. In FH6 enable **Settings → HUD and Gameplay → Data Out** and set port **1234**.
+4. Open **DRIVE** while driving or **PLAN** to build a route first.
+
+Want Navigator on another screen? Open the LAN address shown by the launcher from a phone, tablet or second PC on the same network.
+
+➡️ See [How to run it](#-how-to-run-it) below for the full setup and troubleshooting guide.
 
 ## ⬇️ Download & verify
 
@@ -101,7 +121,7 @@ IP       = the LAN IP shown by the Navigator launcher
 PORT     = 1234
 ```
 
-In other words, PORT = `1234`. Start driving after applying the settings. The launcher distinguishes between waiting for FH6, connected telemetry, and a lost connection.
+In other words, PORT = `1234`. Start driving after applying the settings. The launcher distinguishes between waiting for FH6, connected telemetry and a lost connection.
 
 > [!TIP]
 > If DRIVE is open on the same PC, the browser uses the local Navigator server. If you open it from a phone/tablet/second PC, both devices must be on the same LAN and Windows Firewall must allow the Navigator on a **Private** network.
@@ -130,6 +150,20 @@ Persistent logs are stored in:
 The launcher also attempts conservative stale-process recovery if an old Navigator instance is still occupying the configured HTTP port.
 
 For the longer Russian startup guide see [`HOW_TO_START.txt`](HOW_TO_START.txt).
+
+## ☕ Support
+
+If FH6 Scenic Navigator makes HUD-free cruising a little more enjoyable and you want to support future development, testing and releases:
+
+### **[☕ Buy me a coffee](https://dalink.to/bazaz)**
+
+The project remains a personal pet project; feedback and bug reports are just as useful as financial support.
+
+## 🐛 Feedback & ideas
+
+Found a routing bug, a missing place or something confusing in the UI? [Open an issue](https://github.com/atikhobaev/fh6-scenic-navigator/issues).
+
+Ideas for better scenic driving, second-screen use and route planning are welcome too.
 
 ## 🧠 Engineering challenges we solved
 
@@ -177,7 +211,7 @@ A persistent off-route state beyond roughly **45 m for 800 ms** triggers a new l
 
 ForzaLabs/community data remains useful for visual road shape, overlays and contextual information. But it no longer decides whether a transition is legal. **ForzaLabs supplies useful geometry; Directed WVAN supplies traffic authority.**
 
-Other problems solved along the way include official POI localization without machine-translation guessing, offline catalog packaging, a one-file portable launcher, stale-process recovery, Win32 UI responsiveness, and killing orphaned Python servers reliably with a Windows Job Object.
+Other problems solved along the way include official POI localization without machine-translation guessing, offline catalog packaging, a one-file portable launcher, stale-process recovery, Win32 UI responsiveness and killing orphaned Python servers reliably with a Windows Job Object.
 
 ➡️ **[Read the full engineering story →](docs/ENGINEERING_NOTES.md)**
 
@@ -220,7 +254,7 @@ Native Windows launcher (Go / Win32)
 
 ### Routing authority
 
-The active navigation path is produced from `fh6-navgraph-v1`, a directed graph compiled from locally owned FH6 WVAN navigation data. Raw game-owned `.nav`, `.owt`, `.oww`, and `.owbs` files are intentionally excluded from source and releases.
+The active navigation path is produced from `fh6-navgraph-v1`, a directed graph compiled from locally owned FH6 WVAN navigation data. Raw game-owned `.nav`, `.owt`, `.oww` and `.owbs` files are intentionally excluded from source and releases.
 
 ## 🛠️ Run from source
 
@@ -278,5 +312,7 @@ The project uses public factual map/location references and locally owned game d
 ---
 
 **🌄 Drive calm · plan the scenic route · keep the HUD clean**
+
+**[☕ Buy me a coffee](https://dalink.to/bazaz)**
 
 </div>
