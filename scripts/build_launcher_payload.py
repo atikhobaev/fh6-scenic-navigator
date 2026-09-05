@@ -32,6 +32,6 @@ def build(out:Path,version:str)->dict:
     return {'version':version,'files':len(files),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--out',default='launcher_native/assets/app_payload.zip');ap.add_argument('--version',default='1.19.2');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--out',default='launcher_native/assets/app_payload.zip');ap.add_argument('--version',default='1.20.0');a=ap.parse_args()
     report=build(ROOT/a.out,a.version)
     print(json.dumps(report,indent=2))

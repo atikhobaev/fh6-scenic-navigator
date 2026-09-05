@@ -137,6 +137,6 @@ test('launcher owns browser startup so an old 8080 server cannot be opened befor
 });
 
 test('DRIVE visibly identifies the running build next to the mode switch', () => {
-  assert.match(html, /v1\.19\.2/);
+  assert.match(html, /v1\.20\.0/);
   assert.match(html, /class="[^"]*hc-mode[^"]*"[\s\S]*DRIVE[\s\S]*PLAN/);
 });

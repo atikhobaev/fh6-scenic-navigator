@@ -69,7 +69,7 @@ class NavGraphServerTests(unittest.TestCase):
 class StaticFreshnessTests(unittest.TestCase):
     def test_build_version_is_exposed(self):
         import server as server_module
-        self.assertEqual(server_module.APP_VERSION, '1.19.2')
+        self.assertEqual(server_module.APP_VERSION, '1.20.0')
 
     def test_server_progress_is_scoped_separately_from_launcher_progress(self):
         import server as server_module

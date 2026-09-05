@@ -44,9 +44,9 @@ test('planner exposes DRIVE PLAN mode switch with PLAN active',()=>{
   assert.match(html,/class="[^"]*hc-mode[^"]*"[^>]*>[\s\S]*href="\/"[^>]*>DRIVE<[\s\S]*<strong[^>]*>PLAN<\/strong>/);
 });
 
-test('Planner visibly identifies v1.19.2 so stale-server launches are obvious',()=>{
+test('Planner visibly identifies v1.20.0 so stale-server launches are obvious',()=>{
   const html=read('../static/planner/index.html');
-  assert.match(html,/v1\.19\.2/);
+  assert.match(html,/v1\.20\.0/);
 });
 
 test('planner uses thumbnail in search and lazy non-draggable local media',()=>{

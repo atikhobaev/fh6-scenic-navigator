@@ -1,3 +1,4 @@
+from contextlib import closing
 import sqlite3
 import tempfile
 import unittest
@@ -42,7 +43,7 @@ class PlannerDatabaseTests(unittest.TestCase):
         from planner_database import PlannerDatabase
         with tempfile.TemporaryDirectory() as td:
             root = Path(td); path = root / 'navigator.db'
-            with sqlite3.connect(path) as con:
+            with closing(sqlite3.connect(path)) as con, con:
                 con.executescript("""
                 create table app_state(key text primary key,value text not null);
                 create table routes(

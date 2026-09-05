@@ -146,7 +146,7 @@ jobs:
               vt=f'[**VirusTotal:** {malicious} malicious / {suspicious} suspicious / {total} engines](https://www.virustotal.com/gui/file/{sha})'
           else:
               vt='**VirusTotal:** ⏳ `VT_API_KEY` not configured — see [SECURITY.md](SECURITY.md)'
-          block=f'''### ✅ Latest release: `{tag}`\n\n| Download | Integrity | Malware scan |\n| --- | --- | --- |\n| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | {vt} |\n\n**SHA-256**\n\n```text\n{sha}\n```\n\n[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/{tag}) · [VirusTotal report by SHA-256](https://www.virustotal.com/gui/file/{sha})'''
+          block=f'''### ✅ Latest release: `{tag}`\n\n| Download | Integrity | Malware scan |\n| --- | --- | --- |\n| [**Windows x64 portable EXE**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe) | [**SHA-256 file**](https://github.com/atikhobaev/fh6-scenic-navigator/releases/latest/download/FH6_Scenic_Navigator_Windows_x64.exe.sha256) | {vt} |\n\n**SHA-256**\n\n```text\n{sha}\n```\n\n[Open GitHub Release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/{tag})'''
           p=Path('README.md'); text=p.read_text(encoding='utf-8'); start='<!-- RELEASE_STATUS_START -->'; end='<!-- RELEASE_STATUS_END -->'
           before, rest=text.split(start,1); _, after=rest.split(end,1)
           p.write_text(before+start+'\n'+block+'\n'+end+after, encoding='utf-8')

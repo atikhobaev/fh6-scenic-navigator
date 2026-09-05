@@ -51,10 +51,10 @@ test('DRIVE can resolve a unique official localization from an English game name
   assert.equal(localizedGameName('Unknown Place','es-419'),'Unknown Place');
 });
 
-test('DRIVE and PLAN expose stable Horizon Command mode switch and v1.19.2 build label',()=>{
+test('DRIVE and PLAN expose stable Horizon Command mode switch and v1.20.0 build label',()=>{
   for(const html of [driveHtml,plannerHtml]) {
     assert.match(html,/class="[^"]*hc-mode[^"]*"/);
-    assert.match(html,/v1\.19\.2/);
+    assert.match(html,/v1\.20\.0/);
     assert.match(html,/\/styles\/tailwind\.css/);
   }
   assert.match(driveHtml,/driveLocaleButton/);
