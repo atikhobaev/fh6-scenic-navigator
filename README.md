@@ -103,7 +103,7 @@ Compare the result with the adjacent `.sha256` asset in the same GitHub Release.
 3. No installation and no separate Python setup are required — the portable build already contains the Navigator payload and the official CPython embeddable runtime.
 4. Click **Start Navigator** / **Запустить Navigator**.
 5. Wait until the launcher reports that Navigator is running. The progress line shows preparation of the runtime, road graph, localization and local server.
-6. Open **DRIVE** for live navigation or **PLAN** for route planning. If auto-open is enabled, DRIVE opens only after the local HTTP server is actually ready.
+6. Open **DRIVE** for live navigation or Open **PLAN** for route planning. If auto-open is enabled, DRIVE opens only after the local HTTP server is actually ready.
 
 ### 2. Enable FH6 telemetry
 
