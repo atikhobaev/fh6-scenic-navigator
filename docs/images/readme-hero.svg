@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
   <title id="title">FH6 Scenic Navigator — Drive. Plan. Discover.</title>
-  <desc id="desc">Mount Fuji, cherry blossoms and a sports car on a winding road at sunset. HUD-free navigation, scenic route planning and second-screen exploration.</desc>
+  <desc id="desc">Mount Fuji and a BMW M5 E28-inspired classic sedan driving through airborne cherry blossom petals on a winding road at sunset. HUD-free navigation, scenic route planning and second-screen exploration.</desc>
   <defs>
     <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#101525"/><stop offset=".55" stop-color="#211329"/><stop offset="1" stop-color="#542238"/></linearGradient>
     <linearGradient id="sun" x2="0" y2="1"><stop stop-color="#ffc675"/><stop offset="1" stop-color="#ff397d"/></linearGradient>
@@ -19,15 +19,53 @@
     <path d="M832 554c113-110 374-111 326-182-25-37-223-24-211-68 7-28 84-38 98-65" fill="none" stroke="#171c2b" stroke-width="69"/>
     <path d="M832 554c113-110 374-111 326-182-25-37-223-24-211-68 7-28 84-38 98-65" fill="none" stroke="#ffb877" stroke-width="3" stroke-dasharray="15 18"/>
     <path d="M790 520c85-105 227-103 302-142" fill="none" stroke="#ff397d" stroke-width="4"/>
-    <g transform="translate(1055 353)">
-      <ellipse cx="107" cy="84" rx="123" ry="16" fill="#090e19" opacity=".7"/>
-      <path d="m0 61 15-27 48-10 31-30h58l43 37 30 12 4 26H0Z" fill="url(#body)" stroke="#e5dbef" stroke-width="2"/>
-      <path d="m73 25 26-24h48l30 27Z" fill="#172637" stroke="#767f9e" stroke-width="2"/>
-      <path d="m123 2 5 24M11 47h35m156 4h21" fill="none" stroke="#ffdda4" stroke-width="4"/>
-      <path d="M53 52h121" stroke="#666d87" stroke-width="2"/>
-      <g fill="#101522" stroke="#8d94ab" stroke-width="5"><circle cx="48" cy="70" r="21"/><circle cx="182" cy="70" r="21"/></g>
-      <g fill="#c5ccdc"><circle cx="48" cy="70" r="9"/><circle cx="182" cy="70" r="9"/></g>
-      <path d="M78 79h75" stroke="#ff397d" stroke-width="3"/>
+    <!-- E28-inspired box sedan, front three-quarter view; airborne cherry petals trail the rear wheels. -->
+    <g fill="#ffc1de" stroke="#e773aa" stroke-width=".7">
+<path d="M0 -7Q7 -7 4.2 1Q0 11 -4.2 1Q-7 -7 0 -7Z" transform="translate(994 437) rotate(-30)"/>
+<path d="M0 -6Q6 -6 3.5999999999999996 1Q0 10 -3.5999999999999996 1Q-6 -6 0 -6Z" transform="translate(972 421) rotate(40)"/>
+<path d="M0 -7Q7 -7 4.2 1Q0 11 -4.2 1Q-7 -7 0 -7Z" transform="translate(944 396) rotate(-45)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(910 408) rotate(65)"/>
+<path d="M0 -6Q6 -6 3.5999999999999996 1Q0 10 -3.5999999999999996 1Q-6 -6 0 -6Z" transform="translate(895 373) rotate(20)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(964 367) rotate(-35)"/>
+<path d="M0 -6Q6 -6 3.5999999999999996 1Q0 10 -3.5999999999999996 1Q-6 -6 0 -6Z" transform="translate(1018 461) rotate(55)"/>
+<path d="M0 -7Q7 -7 4.2 1Q0 11 -4.2 1Q-7 -7 0 -7Z" transform="translate(979 476) rotate(-15)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(932 453) rotate(35)"/>
+<path d="M0 -6Q6 -6 3.5999999999999996 1Q0 10 -3.5999999999999996 1Q-6 -6 0 -6Z" transform="translate(886 435) rotate(-55)"/>
+<path d="M0 -4Q4 -4 2.4 1Q0 8 -2.4 1Q-4 -4 0 -4Z" transform="translate(865 398) rotate(20)"/>
+<path d="M0 -4Q4 -4 2.4 1Q0 8 -2.4 1Q-4 -4 0 -4Z" transform="translate(918 343) rotate(55)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(1003 387) rotate(65)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(1085 468) rotate(20)"/>
+<path d="M0 -6Q6 -6 3.5999999999999996 1Q0 10 -3.5999999999999996 1Q-6 -6 0 -6Z" transform="translate(1199 470) rotate(-35)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(1247 450) rotate(40)"/>
+<path d="M0 -5Q5 -5 3.0 1Q0 9 -3.0 1Q-5 -5 0 -5Z" transform="translate(1273 472) rotate(65)"/>
+    </g>
+    <g fill="none" stroke="#e47aa7" opacity=".35" stroke-width="2" stroke-linecap="round"><path d="M1007 449q-63-19-86-62m72 68q-40 3-73-11m83-24q-36-15-50-38"/></g>
+    <g transform="translate(999 328)">
+      <ellipse cx="163" cy="124" rx="168" ry="17" fill="#090e19" opacity=".7"/>
+      <!-- Long straight beltline, upright cabin and distinct three-box E28 silhouette. -->
+      <path d="M8 74 18 46 82 40 111 3 194 3 229 42 292 52 311 72 303 107 13 107Z" fill="#525f76" stroke="#c8cfdf" stroke-width="2"/>
+      <path d="m22 46 62-2 30-36h77l36 36-4 11-195 9Z" fill="#929caf"/>
+      <path d="m94 42 23-31h28v32Zm59 1V11h36l28 34Z" fill="#182c40" stroke="#d2d5df" stroke-width="2"/>
+      <path d="m118 14 21 0-20 25h-18m58-24h26l-22 26h-7" fill="#8ca3bb" opacity=".25"/>
+      <path d="m228 47 62 9 18 18-81-8Z" fill="#b3bbcb"/>
+      <path d="m14 73 211-8v39H15Z" fill="#69748a"/>
+      <path d="m215 66 93 8-5 33-88-3Z" fill="#3b455c" stroke="#b7c0d2" stroke-width="2"/>
+      <path d="M20 81h192m-68-35-1 55m-51-55-9 55" stroke="#283447" stroke-width="2"/>
+      <path d="M117 58h14m47 0h14" stroke="#dde1eb" stroke-width="3"/>
+      <path d="m15 98 199 0 90 4" fill="none" stroke="#151d2c" stroke-width="9"/>
+      <path d="M25 44h44v5H24Z" fill="#172031"/>
+      <path d="m203 42 13-2 8 9-18 1Z" fill="#3a465d" stroke="#aab3c6"/>
+      <g fill="#111824" stroke="#a8b3c6" stroke-width="4"><ellipse cx="61" cy="105" rx="24" ry="28"/><ellipse cx="196" cy="108" rx="23" ry="28"/></g>
+      <g fill="#67778e" stroke="#d6deeb" stroke-width="2"><ellipse cx="61" cy="105" rx="13" ry="17"/><ellipse cx="196" cy="108" rx="12" ry="17"/></g>
+      <g stroke="#d6deeb" stroke-width="2"><path d="M61 89v32m-12-17h24m-20-11 16 25m-16 0 16-25M196 92v32m-11-17h22m-19-11 16 24m-16 0 16-24"/></g>
+      <!-- Four round lamps and twin kidney grille. -->
+      <path d="m222 73 77 6-2 16-75-4Z" fill="#141b28"/>
+      <g fill="#fff2cf" stroke="#c0c8d4" stroke-width="1.5"><ellipse cx="232" cy="82" rx="6" ry="6"/><ellipse cx="246" cy="83" rx="6" ry="6"/><ellipse cx="281" cy="86" rx="5.5" ry="6"/><ellipse cx="293" cy="87" rx="5" ry="6"/></g>
+      <g fill="#0c131e" stroke="#d3d9e3" stroke-width="1.5"><path d="m258 78 6 1-1 13-6-1Z"/><path d="m266 79 6 0-1 13-6 0Z"/></g>
+      <path d="m224 94 10 1m57 4 8 1" stroke="#ffae62" stroke-width="3"/>
+      <path d="m254 101 23 2-1 7-23-2Z" fill="#c2cbd9"/>
+      <path d="m17 74 6 0" stroke="#ff526e" stroke-width="5"/>
+      <path d="M88 119h81" stroke="#e67ca7" stroke-width="2" opacity=".7"/>
     </g>
 <g fill="none" stroke="#714059" stroke-linecap="round"><path d="M1415 19c-73 5-104 57-191 55-45-1-70-28-111-28" stroke-width="10"/><path d="m1328 49-35-32-50-12m-15 69-35 44-49 12m234-98-1 88-37 38" stroke-width="5"/></g><use href="#blossom" transform="translate(1380 27) scale(1.3)"/><use href="#blossom" transform="translate(1355 43) scale(1)"/><use href="#blossom" transform="translate(1324 50) scale(1.2)"/><use href="#blossom" transform="translate(1297 62) scale(1.1)"/><use href="#blossom" transform="translate(1260 75) scale(1.3)"/><use href="#blossom" transform="translate(1222 71) scale(1)"/><use href="#blossom" transform="translate(1189 62) scale(1.1)"/><use href="#blossom" transform="translate(1156 50) scale(0.8)"/><use href="#blossom" transform="translate(1121 45) scale(0.8)"/><use href="#blossom" transform="translate(1293 19) scale(1)"/><use href="#blossom" transform="translate(1264 11) scale(0.9)"/><use href="#blossom" transform="translate(1213 96) scale(0.9)"/><use href="#blossom" transform="translate(1191 115) scale(1.1)"/><use href="#blossom" transform="translate(1156 128) scale(0.8)"/><use href="#blossom" transform="translate(1377 84) scale(1.2)"/><use href="#blossom" transform="translate(1367 117) scale(1)"/><use href="#blossom" transform="translate(1342 145) scale(1.1)"/><use href="#blossom" transform="translate(1400 66) scale(1.2)"/><use href="#blossom" transform="translate(1305 84) scale(0.7)"/><g fill="#ffb2d5" opacity=".8"><ellipse cx="1278" cy="164" rx="4" ry="8" transform="rotate(30 1278 164)"/><ellipse cx="1323" cy="241" rx="4" ry="7" transform="rotate(-25 1323 241)"/><ellipse cx="1188" cy="202" rx="3" ry="6" transform="rotate(45 1188 202)"/></g>
     <path d="M0 0h22v520H0Z" fill="url(#neon)"/>
@@ -60,4 +98,3 @@
     </g>
   </g>
 </svg>
-
