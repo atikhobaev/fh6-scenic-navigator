@@ -8,6 +8,8 @@ Open the repository **Settings → General → Social preview → Edit → Uploa
 
 ## VirusTotal
 
+Repository secret `VT_API_KEY` was checked through the API and is absent.
+
 Open **Settings → Secrets and variables → Actions → New repository secret**. Name: `VT_API_KEY`. Paste the API key only into the GitHub secret value, never into an issue, README or chat.
 
 After the release passes every manual gate and is published, open **Actions → Release Security → Run workflow**, choose the default branch and enter the actual published tag. Confirm the workflow processes the final published EXE, and check that its returned hash matches the release checksum before sharing the report. There is no VirusTotal URL for the new candidate yet.
