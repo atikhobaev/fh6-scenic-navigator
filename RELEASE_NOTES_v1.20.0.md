@@ -16,7 +16,7 @@ Run the EXE, click Start Navigator, then set FH6 Data Out to ON, the host IP sho
 
 ## Preview limitations
 
-772 game records have approximate road-network positions; 24 retain source-exact coordinates. This preview is not a precise collectible guide. Uncached map imagery requires internet. Code licensing and third-party data redistribution review remain open; see docs/PROVENANCE_REVIEW.md.
+772 game records have approximate road-network positions; 24 retain source-exact coordinates. This preview is not a precise collectible guide. Uncached map imagery requires internet. Original code is MIT licensed; third-party data redistribution review remains separate. See LICENSE_SCOPE.md and docs/PROVENANCE_REVIEW.md.
 
 ## Technical changes
 

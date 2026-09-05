@@ -1,18 +1,16 @@
 # Provenance review — Public Preview
 
-Reviewed 2026-09-05 from main `45f6f0d9955352fc095ec2df8a7aedc5954dd28b`. This is a source/provenance assessment, not an assertion that all redistribution permissions have been obtained. No root LICENSE has been selected.
+Reviewed 2026-09-05 from main `45f6f0d9955352fc095ec2df8a7aedc5954dd28b`. This is a source/provenance assessment, not an assertion that all redistribution permissions have been obtained. The owner approved MIT for the original code on 2026-09-05; see [LICENSE](../LICENSE) and [license scope](../LICENSE_SCOPE.md).
 
-## Recommendation for the owner's decision
+## Owner-approved code license
 
-**MIT for the original code**, subject to confirming authorship and resolving the data questions below. It is a simple permissive choice compatible with the MIT references identified here. LGPL is not justified merely because Rat Vision uses it. MIT would grant reuse rights only for code the owner controls; it cannot license third-party map imagery, databases or game-derived geometry. If stronger patent terms are preferred, Apache-2.0 is an alternative, but it does not resolve those data rights either.
-
-Before adding LICENSE, the owner should confirm that the identified original modules were authored for this project and approve the license scope. Keep “source available” / “free public project” until then.
+**MIT for the original code**, approved by the owner on 2026-09-05. It is a permissive choice compatible with the MIT references identified here. It covers only material the owner controls; it does not license third-party map imagery, databases or game-derived geometry. The data findings below remain separate from this decision.
 
 ## Code and dependencies
 
 | Component | Evidence / classification | Action |
 | --- | --- | --- |
-| Python server, planner services/database/importers; JS DRIVE/PLAN; Go native launcher | Project-specific implementation and tests. Reviewed module boundaries and attribution comments; complete historical authorship cannot be proven from comments alone. | Candidate original code, pending owner confirmation. |
+| Python server, planner services/database/importers; JS DRIVE/PLAN; Go native launcher | Project-specific implementation and tests. Reviewed module boundaries and attribution comments; complete historical authorship cannot be proven from comments alone. | Original-code license choice approved by owner; historical authorship review remains bounded by the evidence above. |
 | [TheBanHammer/fh6-tel](https://github.com/TheBanHammer/fh6-tel/tree/7ffeb0812f9f240653620ed3ecb0d2266b8d94ab) | MIT, copyright 2025 BanHammer. `telemetry.py` explicitly references community packet layout; upstream is Rust/Svelte, while this parser is a small Python implementation. | Preserve attribution and full MIT notice in `static/licenses/fh6-tel-MIT.txt`. No upstream application bundled. |
 | [FH6-Oversight-Dashboard](https://github.com/nottherealtar/FH6-Oversight-Dashboard/tree/6f659d1b8a2a8fadd32ae270731529b3cfb5a6ca) | No root LICENSE found in the checked revision. Public visibility is not a license. Compared its telemetry parser and the local minimal parser: shared protocol offsets/helper concepts, different application implementation. | Treat as protocol/calibration reference only. Owner must identify any copied expressive code; obtain permission or replace such code if found. Do not attribute an MIT grant to Oversight. |
 | [Elgeryy1/forza-drive](https://github.com/Elgeryy1/forza-drive/tree/a5f0db216d3617fdccb8e1bf17ecee1a35250311) | MIT, copyright 2026 Gerard Alvear. `static/routing.js` explicitly acknowledges its calibration reference; local constants reproduce the transformation. Routing concepts and road format are also cited. | Preserve attribution and full MIT notice in `static/licenses/forza-drive-MIT.txt`. Its courtesy contact request is expressly not a license condition. |
@@ -39,4 +37,4 @@ Raw `.nav`, `.owt`, `.oww`, `.owbs`, game executables and raw StringTables are n
 
 ## Scope and next decision
 
-Reviewed declared references, upstream license files at the pinned revisions, packet/calibration implementations, local data metadata, embedded-payload selection, and runtime dependencies. This is not a forensic audit of every historical commit or a permission clearance. No blanket license was added. The owner should resolve data redistribution scope and approve the proposed MIT code license before advertising the whole repository as open source.
+Reviewed declared references, upstream license files at the pinned revisions, packet/calibration implementations, local data metadata, embedded-payload selection, and runtime dependencies. This is not a forensic audit of every historical commit or a permission clearance. MIT was added for original code with explicit third-party/data exclusions. The owner should resolve data redistribution scope before treating every repository component as freely redistributable.

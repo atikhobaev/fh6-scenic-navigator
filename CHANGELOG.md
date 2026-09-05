@@ -4,6 +4,7 @@ This history was reconstructed from the project's working chats, saved design/sp
 
 ## [1.20.0] - Unreleased — Public Preview
 
+- Licensed original code under MIT, with explicit third-party/data exclusions and bundled license notices.
 - Added real application captures, a social preview and a user-focused Russian introduction.
 - Clarified POI accuracy, map caching and code/data licensing boundaries.
 - Closed SQLite connections deterministically on Windows, including the migration test fixture.

@@ -15,6 +15,7 @@ def should_include(p:Path)->bool:
     if p.name in EXCLUDED_NAMES: return False
     if '__pycache__' in rel.parts or p.suffix in {'.pyc','.pyo'}: return False
     if rel.parts[0]=='static' or rel.parts[0]=='fh6_nav': return p.is_file()
+    if rel.as_posix() == 'LICENSE': return p.is_file()
     return len(rel.parts)==1 and p.suffix.lower() in ALLOWED_TOP_EXT and p.is_file()
 
 def build(out:Path,version:str)->dict:

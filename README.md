@@ -328,6 +328,6 @@ The project uses public factual map/location references and locally owned game d
 
 </div>
 
-## Licensing status
+## License
 
-This is a free public, source-available project. A license for the original code is awaiting the owner’s decision; third-party code and data retain their own terms. See the [provenance review](docs/PROVENANCE_REVIEW.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+The original code is licensed under the [MIT License](LICENSE). Third-party code, game-derived data and map imagery retain their own terms; see [license scope](LICENSE_SCOPE.md), the [provenance review](docs/PROVENANCE_REVIEW.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
