@@ -1,6 +1,6 @@
-# Verification — v1.20.0 Public Preview candidate
+# Verification — v1.20.0 Public Preview
 
-Status: **not published; release gates remain open**. Work started from main `45f6f0d9955352fc095ec2df8a7aedc5954dd28b`.
+Status: **published with owner-approved preview limitations on 2026-09-05**. The owner approved publication with the manual checks below still unverified and explicitly deferred VirusTotal. Work started from main `45f6f0d9955352fc095ec2df8a7aedc5954dd28b`.
 
 ## Executed locally on Windows
 
@@ -33,20 +33,22 @@ Owner-approved MIT and LICENSE_SCOPE.md are now included in the embedded payload
 0fc438f25ad998bb5f9f457e46457168ea59083e3148a2b755f7d2022b4e9278
 ```
 
-[Draft release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/untagged-708230b6a8c76bbe7b3f) contains both EXEs and checksums. The draft assets must match this current MIT build; download verification is performed when replacing them. The previous build hash is superseded. GitHub repository secret `VT_API_KEY` was checked through the API and is absent.
+[Published release](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.20.0) targets merge commit `0e25d31f95bffefeef6d88aa3411310d767cce74`. Both public EXE downloads (versioned and stable alias) were downloaded and matched the SHA-256 above; the public checksum matched too. Repository secret `VT_API_KEY` is absent; VirusTotal was not run.
 
-The local stable alias `FH6_Scenic_Navigator_Windows_x64.exe` has the same hash. Both have adjacent `.sha256` files. Rebuilding after a payload/code change requires rehashing and rerunning checks. This is a candidate hash, not a claim about a published latest release.
+[Main CI](https://github.com/atikhobaev/fh6-scenic-navigator/actions/runs/33935065005) passed all five jobs. [Release integrity workflow](https://github.com/atikhobaev/fh6-scenic-navigator/actions/runs/33936170232) succeeded, refreshed the stable alias/checksums and README, and skipped VirusTotal.
 
-## Required manual / remaining gates
+This report records the published binary checks. Later documentation-only status updates do not change the release artifact.
+
+## Unverified manual checks / deferred work
 
 - Launch the **exact candidate EXE**, click Start Navigator, verify DRIVE/PLAN and close the native window; confirm no orphan process or occupied port. Controller integration is not equivalent to clicking the built GUI. Native computer-use tools crashed in this environment, so interactive GUI smoke is not claimed.
 - Verify FH6 Data Out ON / host IP / **1234** in a real driving session. Replace the explicitly labelled test-telemetry DRIVE capture if an in-game screenshot is preferred.
 - Open the launcher LAN URL from another physical phone/tablet/PC. A browser viewport or second local tab is not proof of cross-device LAN access.
 - Verify the Windows Firewall prompt/private-network permission flow on the target PC. No firewall rules were modified in this task.
-- CI covers Python 3.13 on Linux/Windows, JavaScript, Go tests/race/vet and hygiene. Check the current head in [PR #2](https://github.com/atikhobaev/fh6-scenic-navigator/pull/2/checks); the earlier candidate passed all jobs and the MIT follow-up reruns them.
+- CI covers Python 3.13 on Linux/Windows, JavaScript, Go tests/race/vet and hygiene; results are linked above. [PR #2](https://github.com/atikhobaev/fh6-scenic-navigator/pull/2) was merged with owner approval.
 - Review unresolved data permissions in `../PROVENANCE_REVIEW.md`; original-code MIT licensing has now been approved by the owner and added.
-- Publish only after those gates; then verify downloaded published EXE hash and alias. Submit that exact published binary to VirusTotal. No VT scan or report URL is claimed for this candidate.
+- The owner accepted publication without the manual checks above and reported no way to test another LAN device. These checks remain unverified, not passed. VirusTotal is deferred; no scan result or report URL is claimed.
 
 ## First-time visitor UX review
 
-The opening explains HUD-free second-screen navigation, provides one prominent EXE download, and shows a real PLAN screenshot after Why I built it. Quick Start covers launch, Data Out and DRIVE/PLAN. LAN/Firewall instructions, Issues and the coffee link are visible. Russian documentation now has the same user-focused entry and preserves all technical history below. POI accuracy and uncached-map internet requirements are explicit. Download currently remains the existing published v1.19.2 until the new candidate clears release gates.
+The opening explains HUD-free second-screen navigation, provides one prominent EXE download, and shows a real PLAN screenshot after Why I built it. Quick Start covers launch, Data Out and DRIVE/PLAN. LAN/Firewall instructions, Issues and the coffee link are visible. Russian documentation now has the same user-focused entry and preserves all technical history below. POI accuracy and uncached-map internet requirements are explicit. The download now resolves to published v1.20.0 Public Preview.

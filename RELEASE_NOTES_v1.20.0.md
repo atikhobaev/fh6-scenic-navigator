@@ -22,6 +22,6 @@ Run the EXE, click Start Navigator, then set FH6 Data Out to ON, the host IP sho
 
 Deterministic SQLite connection cleanup on Windows; full pytest collection with Windows CI; platform-scoped FIFO test; Win32 message memory copying compatible with go vet; refreshed screenshots and documentation.
 
-## Publication gate
+## Verification status
 
-Draft preparation only. Do not publish until the required checks in docs/release/VERIFICATION.md are completed. Attach checksums for the exact final EXE; submit that published binary to VirusTotal. Never reuse a previous build’s report.
+Published on 2026-09-05 with owner approval. Automated regression, embedded-runtime integration and release integrity checks passed; both public EXE downloads match their SHA-256. Actual FH6 driving, physical LAN access, Firewall interaction and native GUI Start/normal Close remain unverified. VirusTotal is deferred by the owner; no scan result is claimed. See [the verification report](docs/release/VERIFICATION.md).

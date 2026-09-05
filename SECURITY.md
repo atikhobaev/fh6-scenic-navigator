@@ -11,9 +11,8 @@ For each GitHub Release, `.github/workflows/release-security.yml` is designed to
 3. calculate SHA-256;
 4. publish `FH6_Scenic_Navigator_Windows_x64.exe.sha256` beside the download;
 5. submit the executable to VirusTotal when `VT_API_KEY` is configured;
-6. wait for the VirusTotal analysis to complete;
-7. publish a small VirusTotal summary asset;
-8. update the release-verification block in `README.md`.
+6. wait for the VirusTotal analysis to complete when configured;
+7. update the release-verification block in `README.md` with the hash and available scan status.
 
 The workflow also supports a manual run so an existing release can be rechecked without rebuilding it.
 
@@ -44,7 +43,7 @@ Release executables belong in GitHub Releases, not in the source tree.
 
 ## Reporting a security concern
 
-Because this repository is private, open a private repository issue describing the concern and include:
+This repository is public. Do not put exploit details or sensitive information in public issues. Use GitHub private vulnerability reporting if the Security tab offers it; otherwise open an issue requesting a private contact channel without disclosing the vulnerability. In the private report, include:
 
 - affected version/tag;
 - SHA-256 of the file you tested;

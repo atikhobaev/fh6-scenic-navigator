@@ -6,14 +6,12 @@ Description and all 12 requested topics were set successfully through the authen
 
 Open the repository **Settings → General → Social preview → Edit → Upload an image**. Upload `docs/images/social-preview.png` (1280×640). `social-preview.svg` is the editable source. This task has not installed the preview in GitHub Settings.
 
-## VirusTotal
+## VirusTotal — deferred by owner
 
-Repository secret `VT_API_KEY` was checked through the API and is absent.
+Repository secret `VT_API_KEY` is absent. v1.20.0 was published without a VirusTotal scan; the release and README do not claim a result.
 
-Open **Settings → Secrets and variables → Actions → New repository secret**. Name: `VT_API_KEY`. Paste the API key only into the GitHub secret value, never into an issue, README or chat.
+When resuming this work, add the API key in **Settings → Secrets and variables → Actions → New repository secret** as `VT_API_KEY`. Then run **Actions → Release Security → Run workflow** with the published tag. Verify the returned hash matches the published executable before sharing a report.
 
-After the release passes every manual gate and is published, open **Actions → Release Security → Run workflow**, choose the default branch and enter the actual published tag. Confirm the workflow processes the final published EXE, and check that its returned hash matches the release checksum before sharing the report. There is no VirusTotal URL for the new candidate yet.
+## Publication complete
 
-## Publish the prepared draft
-
-Review `VERIFICATION.md`; finish all outstanding gates first. Merge the PR, verify the release target commit includes the reviewed payload, and rebuild if any payload/code input changed. Replace draft assets and hashes after any rebuild. Only then publish the draft as latest and run Release Security. Keep the current README release block on v1.19.2 until the replacement is actually published.
+[PR #2](https://github.com/atikhobaev/fh6-scenic-navigator/pull/2) is merged. [v1.20.0 Public Preview](https://github.com/atikhobaev/fh6-scenic-navigator/releases/tag/v1.20.0) is published as latest with owner-approved limitations. Public downloads, stable alias and SHA-256 were verified. See `VERIFICATION.md` for evidence and the manual checks that remain unverified.

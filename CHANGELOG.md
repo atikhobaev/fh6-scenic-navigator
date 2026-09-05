@@ -2,7 +2,7 @@
 
 This history was reconstructed from the project's working chats, saved design/specification files, release artifacts, and the local Git history. Entries describe confirmed user-visible or architectural changes; experimental ideas that were only discussed and not shipped are omitted.
 
-## [1.20.0] - Unreleased — Public Preview
+## [1.20.0] - 2026-09-05 — Public Preview
 
 - Licensed original code under MIT, with explicit third-party/data exclusions and bundled license notices.
 - Added real application captures, a social preview and a user-focused Russian introduction.
