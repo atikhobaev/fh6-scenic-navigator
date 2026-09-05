@@ -9,7 +9,7 @@ const exists = (p) => fs.existsSync(path.join(root, p));
 
 test('README exposes polished visual download and verification surfaces', () => {
   const readme = read('README.md');
-  assert.match(readme, /docs\/images\/readme-hero\.svg/);
+  assert.match(readme, /docs\/images\/readme-hero\.png/);
   assert.match(readme, /docs\/images\/download-latest\.svg/);
   assert.match(readme, /releases\/latest\/download\/FH6_Scenic_Navigator_Windows_x64\.exe/);
   assert.match(readme, /<!-- RELEASE_STATUS_START -->/);
@@ -18,9 +18,16 @@ test('README exposes polished visual download and verification surfaces', () => 
   assert.match(readme, /CI/i);
 });
 
+test('README raster banners are valid PNG assets', () => {
+  for (const file of ['docs/images/readme-hero.png', 'docs/images/support-coffee.png']) {
+    const bytes = fs.readFileSync(path.join(root, file));
+    assert.deepEqual([...bytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], `${file} must be a PNG`);
+    assert.ok(bytes.readUInt32BE(16) > 0 && bytes.readUInt32BE(20) > 0, `${file} must have nonzero dimensions`);
+  }
+});
+
 test('README visual SVG assets are committed as text assets', () => {
   for (const file of [
-    'docs/images/readme-hero.svg',
     'docs/images/download-latest.svg',
     'docs/images/feature-strip.svg',
     'docs/images/security-strip.svg',
