@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/images/readme-hero.svg" alt="FH6 Scenic Navigator — Drive, Plan, Discover" width="100%" />
+<img src="docs/images/readme-hero.svg?v=20260905-premium" alt="FH6 Scenic Navigator — Enjoy the road. Leave the HUD behind." width="100%" />
 
 <br />
 
